@@ -61,7 +61,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
 	</head>
-	<body>
+	<body onload="initialize()">
 		
 	<div class="fh5co-loader"></div>
 	
@@ -72,7 +72,7 @@
 				<div class="row">
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
-							<li class="active"><a href="index.html">Acceuil</a></li>
+							<li><a href="index.html">Acceuil</a></li>
 							<li class="has-dropdown">
 								<a href="mariage.html">Le Mariage</a>
 								<ul class="dropdown">
@@ -92,7 +92,7 @@
 								</ul>
 							</li>
 							<li><a href="conseils.html">Petits conseils</a></li>
-							<li><a href="carte.html">La carte</a></li>
+							<li class="active"><a href="carte.html">La carte</a></li>
 							<li><a href="contact.html">Contact</a></li>
 							
 						</ul>
@@ -102,11 +102,23 @@
 			</div>
 		<!-- </div> -->
 	</nav>
+	
+	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(images/hero_1.jpeg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Où aller</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae enim quae vitae cupiditate, sequi quam ea id dolor reiciendis consectetur repudiandae. Rem quam, repellendus veniam ipsa fuga maxime odio? Eaque!</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<div id="fh5co-about" class="fh5co-section">
 		<div class="container">
-			<div id="map" style="width:100%; height:100%"></div>
+			<div id="map" style="width:100%; height:100%;min-height:700px;"></div>
 		</div>
 	</div>
 
