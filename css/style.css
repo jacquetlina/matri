@@ -712,6 +712,11 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 7em 0;
   clear: both;
 }
+
+#fh5co-started{
+	padding-bottom: 2em;
+}
+
 @media screen and (max-width: 768px) {
   #fh5co-slider,
   #fh5co-about,
@@ -724,6 +729,9 @@ h1, h2, h3, h4, h5, h6, figure {
   #fh5co-footer {
     padding: 3em 0;
   }
+  #fh5co-started{
+	padding-bottom: 2em;
+	}
 }
 
 #fh5co-content {
@@ -1784,3 +1792,8 @@ textarea {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.first_div{
+	padding-top: 25em;
+}
