@@ -1797,3 +1797,24 @@ textarea {
 .first_div{
 	padding-top: 25em;
 }
+
+.popuptext{
+	color: rgba(0, 0, 0, 0.3) !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+}
+
+.my-div-span{
+	z-index:3000 !important;
+	color: rgba(255, 255, 255, 1) !important;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
+	text-align:center;
+	margin-top:0px;
+}
+
+.my-div-image{
+	width:50px;
+	height:30px;
+ 
+}
