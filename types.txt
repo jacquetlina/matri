@@ -1,0 +1,9 @@
+Ville
+Parc
+Culturel
+Rues
+Paysage
+Plage
+Resto
+mariage
+hotels_mariage
