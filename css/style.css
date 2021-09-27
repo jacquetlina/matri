@@ -1807,8 +1807,8 @@ textarea {
 .my-div-span{
 	z-index:3000 !important;
 	color: rgba(255, 255, 255, 1) !important;
-	text-shadow: 1px 1px black;
-	font-size: 14px;
+	text-shadow: 1.5px 1.5px black;
+	font-size: 18px;
 	text-align:center;
 	margin-top:0px;
 }
@@ -1817,4 +1817,39 @@ textarea {
 	width:50px;
 	height:30px;
  
+}
+
+.my-div-image-mini{
+	width:30px;
+	height:18px;
+ 
+}
+
+.map_container{
+	display: grid;
+	  grid-template-columns: 70% 30%;
+	  grid-template-rows: 1fr;
+	  padding-left:10px !important;
+	  padding-right:10px !important;
+}
+
+#map {
+  grid-column: 1;
+  grid-row: 1;
+  min-height:700px;
+}
+
+#map_items {
+  grid-column: 2;
+  grid-row: 1;
+  padding:20px;
+}
+
+.map_items_content{
+	padding: 2em 20px !important;
+	overflow:auto;
+}
+
+.map_items_item{
+	cursor: pointer;
 }
