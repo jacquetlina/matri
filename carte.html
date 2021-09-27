@@ -60,7 +60,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
 	</head>
-	<body onload="initialize()">
+	<body>
 		
 	<div class="fh5co-loader"></div>
 	
@@ -115,10 +115,26 @@
 	</div>
 
 
-	<div id="fh5co-about" class="fh5co-section">
-		<div class="container">
-			<div id="map" style="width:100%; height:100%;min-height:700px;"></div>
-		</div>
+	<div id="fh5co-about" class="fh5co-section map_container">
+			<div id="map"></div>
+			<div id="map_items">
+				
+				<div id="fh5co-featured-menu" class="fh5co-section map_items_content">
+						<div class="row">
+							<div class="col-md-12 fh5co-heading animate-box">
+								<h2>Cliquez sur un élement pour le retrouver sur la carte</h2>
+								<div class="row">
+										<div id="map_items_list">
+										</div>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+			
+			
+			</div>
 	</div>
 
 	
@@ -190,6 +206,36 @@
 </html>
 <script type="text/javascript">
 
+	$.ajax({
+        type: "GET",
+        url: "data/data.csv",
+        dataType: "text",
+        success: function(data) {
+			var data_list = data.split('\n');
+			var data_object_list = [];
+			for(var i =1; i<data_list.length; i++){
+				var data_list_line = data_list[i].split(';');
+				data_object_list.push(
+					{
+						'name':data_list_line[0],
+						'latlg':[parseFloat(data_list_line[1].split(' ')[0]),parseFloat(data_list_line[1].split(' ')[1])],
+						'type':data_list_line[2],
+						'excursion_journee':data_list_line[3],
+						'description':data_list_line[4],
+						'lien':data_list_line[5],
+						'scale':data_list_line[6]
+					}
+				);
+			}
+			data_object_list.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            initialize(data_object_list);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log("Status: " + xhr.status + "     Error: " + thrownError);
+        }
+    });
+
+	/*
 	var list_cities = [
 		{
 			'name': 'Medellin',
@@ -244,60 +290,217 @@
 			'lien':'www.wikipedia.org'
 		},
 	];
+	*/
 
-    function initialize() {
+    function initialize(list_object) {
         var map = L.map('map').setView([5.859723, -74.924304], 7); // LIGNE 18
 		
 		
-		var ville_Icon = L.icon({
-			iconUrl: 'images/pandaredicon.png',
-
-			iconSize:     [50, 50], // size of the icon
-			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
-			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
-		});
-		
-		var parc_Icon = L.icon({
-			iconUrl: 'images/pandablueicon.png',
-
-			iconSize:     [50, 50], // size of the icon
-			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
-			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
-		});
-		
-		var museum_Icon = L.icon({
-			iconUrl: 'images/pandagreenicon.png',
-
-			iconSize:     [50, 50], // size of the icon
-			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
-			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
-		});
-
         var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { // LIGNE 20
             attribution: 'Â© OpenStreetMap contributors',
             maxZoom: 18
         });
 		
 		
-		var cities = L.layerGroup();
-		for(var i=0; i<list_cities.length; i++){
+		var cities1 = L.layerGroup();
+		var cities2 = L.layerGroup();
+		var topic1 = L.layerGroup();
+		var topic2 = L.layerGroup();
+		var mariage = L.layerGroup();
+		
+		for(var i=0; i<list_object.length; i++){
 		
 			var popup_clic_content = "<div>" +
-			"<h5>" + list_cities[i].name + "</h5>" +
-			"<p class='popuptext'>" + list_cities[i].description + "</p>" +
-			"<a class='popuptext' href='" + list_cities[i].lien + "'>" + list_cities[i].lien + "</a>" +
+			"<h5>" + list_object[i].name + "</h5>" +
+			"<p class='popuptext'>" + list_object[i].description + "</p>" +
+			"<a class='popuptext' href='" + list_object[i].lien + "'>" + list_object[i].lien + "</a>" +
 			"</div>";
 			
-			var myicon= new L.DivIcon({
-				className: 'my-div-icon',
-				html: '<img class="my-div-image" src="' + 'images/pandaredicon.png' + '"/>'+
-					  '<span class="my-div-span">' + list_cities[i].name + '</span>',
+			if(list_object[i].type == 'Ville' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandaredicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
 
-				iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
-				popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
-			})
+					iconAnchor:   [25, 15], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities1);
+			
+			} else if(list_object[i].type == 'Ville' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandaredicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 15], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities2);
+			
+			} else if(list_object[i].type == 'Parc' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandagreenicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			
+			} else if(list_object[i].type == 'Parc' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandagreenicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			
+			} else if(list_object[i].type == 'Culturel' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandabrownicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			} else if(list_object[i].type == 'Culturel' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandabrownicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			} else if(list_object[i].type == 'Rues' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandablackicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			} else if(list_object[i].type == 'Rues' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandablackicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			} else if(list_object[i].type == 'Paysage' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandadarkgreenicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			} else if(list_object[i].type == 'Paysage' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandadarkgreenicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			} else if(list_object[i].type == 'Plage' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandayellowicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			} else if(list_object[i].type == 'Plage' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandayellowicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			} else if(list_object[i].type == 'Resto' && list_object[i].scale == '1'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandablueicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+			} else if(list_object[i].type == 'Resto' && list_object[i].scale == '2'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandablueicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			} else if(list_object[i].type == 'mariage'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandaorangeicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(mariage);
+			} else if(list_object[i].type == 'hotels_mariage'){
+				var myicon;
+				myicon = new L.DivIcon({
+					className: 'my-div-icon',
+					html: '<img class="my-div-image" src="' + 'images/pandaorangeicon.png' + '"/>'+
+						  '<span class="my-div-span">' + list_object[i].name + '</span>',
+
+					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+				})
+				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+			}
+			
+			
 		
-			var marker = new L.marker(list_cities[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities);
+			
 		}
 		/*
 		var topic = L.layerGroup();
@@ -321,19 +524,72 @@
 		
 		
 		
-		cities.addTo(map);
+		cities1.addTo(map);
+		cities2.addTo(map);
+		topic1.addTo(map);
+		topic2.addTo(map);
+		mariage.addTo(map)
 		
 		map.on('zoomend', function() {
 			var currentZoom = map.getZoom();
 			if(currentZoom >= 12) {
-			   map.removeLayer(cities);
-			   map.addLayer(topic);
-			}
+			   map.removeLayer(cities1); 
+			map.addLayer(cities2); 
+			 map.removeLayer(topic1);
+			 map.addLayer(topic2);
+			 map.addLayer(mariage);
+			} 
 			else {
-			 map.addLayer(cities);   
-			 map.removeLayer(topic);
+			 map.addLayer(cities1); 
+			map.removeLayer(cities2); 
+			 map.addLayer(topic1);
+			 map.removeLayer(topic2);
+			 map.addLayer(mariage);
 			}
 		});
+		
+		
+		for(var i = 0; i<list_object.length; i++){
+		
+			var img_html='';
+			if(list_object[i].type='Ville'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandaredicon.png" + "'/>";
+			} else if('Parc'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandagreenicon.png" + "'/>";
+			} else if('Culturel'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandabrownicon.png" + "'/>";
+			} else if('Rues'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandablackicon.png" + "'/>";
+			} else if('Paysage'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandadarkgreenicon.png" + "'/>";
+			} else if('Plage'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandayellowicon.png" + "'/>";
+			} else if('Resto'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandablueicon.png" + "'/>";
+			} else if('mariage'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandaorangeicon.png" + "'/>";
+			} else if('hotels_mariage'){
+				img_html = "<img class='my-div-image-mini' src='" + "images/pandaorangeicon.png" + "'/>";
+			}
+						
+			
+			
+		
+			var html_item = "<div id='map_items_item_" + i + "' class='map_items_item' lglat="+ list_object[i].latlg + " scale="+ list_object[i].scale + ">" +
+				img_html +
+				list_object[i].name +
+			"</div>"
+			$("#map_items_list").append(html_item);
+			$("#map_items_item_" + i).on( "click", function() {
+			  var scale = $( this ).attr("scale");
+			  var lglat_i = $( this ).attr("lglat");
+			  if(scale == 1){
+				map.setView(lglat_i.split(','), 10)
+			  } else if(scale == 2){
+				map.setView(lglat_i.split(','), 13)
+			  }
+			});
+		}
 		
 		
     
