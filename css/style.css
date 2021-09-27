@@ -1847,7 +1847,7 @@ textarea {
 
 .map_items_content{
 	padding: 2em 20px !important;
-	overflow:auto;
+	overflow:auto !importants;
 }
 
 .map_items_item{
