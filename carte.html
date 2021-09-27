@@ -195,19 +195,25 @@
 			'name': 'Medellin',
 			'latlg': [6.247006, -75.578236],
 			'type': 'ville',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		},
 		{
 			'name': 'Bogota',
 			'latlg': [4.701860, -74.069085],
 			'type': 'ville',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		},
 		{
 			'name': 'Cartagena',
 			'latlg': [10.423782, -75.548400],
 			'type': 'ville',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		}
 		
 	];
@@ -217,19 +223,25 @@
 			'name': 'Jardin Botanique de Medellin',
 			'latlg': [6.269469, -75.564470],
 			'type': 'Parc',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		},
 		{
 			'name': 'Cierro Nutibara',
 			'latlg': [6.236138, -75.579852],
 			'type': 'Parc',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		},
 		{
 			'name': "MusÃ©e d'Antioquia",
 			'latlg': [6.252218, -75.569329],
 			'type': 'MusÃ©e',
-			'excursion_journee': true
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
 		},
 	];
 
@@ -238,36 +250,30 @@
 		
 		
 		var ville_Icon = L.icon({
-			iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-orange.png',
+			iconUrl: 'images/pandaredicon.png',
 
-			iconSize:     [38, 95], // size of the icon
-			shadowSize:   [50, 64], // size of the shadow
-			iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-			shadowAnchor: [4, 62],  // the same for the shadow
-			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+			iconSize:     [50, 50], // size of the icon
+			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 		});
 		
 		var parc_Icon = L.icon({
-			iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
+			iconUrl: 'images/pandablueicon.png',
 
-			iconSize:     [38, 95], // size of the icon
-			shadowSize:   [50, 64], // size of the shadow
-			iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-			shadowAnchor: [4, 62],  // the same for the shadow
-			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+			iconSize:     [50, 50], // size of the icon
+			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 		});
 		
 		var museum_Icon = L.icon({
-			iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
+			iconUrl: 'images/pandagreenicon.png',
 
-			iconSize:     [38, 95], // size of the icon
-			shadowSize:   [50, 64], // size of the shadow
-			iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-			shadowAnchor: [4, 62],  // the same for the shadow
-			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+			iconSize:     [50, 50], // size of the icon
+			iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 		});
 
-        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // LIGNE 20
+        var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { // LIGNE 20
             attribution: 'Â© OpenStreetMap contributors',
             maxZoom: 18
         });
@@ -275,9 +281,25 @@
 		
 		var cities = L.layerGroup();
 		for(var i=0; i<list_cities.length; i++){
-			var marker = new L.marker(list_cities[i].latlg,{icon: ville_Icon}).bindPopup(list_cities[i].name).addTo(cities);
-		}
 		
+			var popup_clic_content = "<div>" +
+			"<h5>" + list_cities[i].name + "</h5>" +
+			"<p class='popuptext'>" + list_cities[i].description + "</p>" +
+			"<a class='popuptext' href='" + list_cities[i].lien + "'>" + list_cities[i].lien + "</a>" +
+			"</div>";
+			
+			var myicon= new L.DivIcon({
+				className: 'my-div-icon',
+				html: '<img class="my-div-image" src="' + 'images/pandaredicon.png' + '"/>'+
+					  '<span class="my-div-span">' + list_cities[i].name + '</span>',
+
+				iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+				popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+			})
+		
+			var marker = new L.marker(list_cities[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities);
+		}
+		/*
 		var topic = L.layerGroup();
 		for(var i=0; i<list_topic.length; i++){
 			var icon;
@@ -286,8 +308,16 @@
 			} else if(list_topic[i].type == 'MusÃ©e'){
 				icon = museum_Icon;
 			}
-			var marker = new L.marker(list_topic[i].latlg,{icon: icon}).bindPopup(list_topic[i].name).addTo(topic);
+			
+			var popup_clic_content = "<div>" +
+			"<h5>" + list_cities[i].name + "</h5>" +
+			"<p class='popuptext'>" + list_cities[i].description + "</p>" +
+			"<p class='popuptext'>" + list_cities[i].lien + "</p>" +
+			"</div>"
+			
+			var marker = new L.marker(list_cities[i].latlg,{icon: icon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities);
 		}
+		*/
 		
 		
 		
