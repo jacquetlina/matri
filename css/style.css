@@ -1847,9 +1847,16 @@ textarea {
 
 .map_items_content{
 	padding: 2em 20px !important;
-	overflow:auto !importants;
+}
+
+#map_items_list{
+	overflow:auto !important;
 }
 
 .map_items_item{
 	cursor: pointer;
+}
+
+#map_items .row{
+	height: 50%
 }
