@@ -217,16 +217,18 @@
 				var data_list_line = data_list[i].split(';');
 				data_object_list.push(
 					{
-						'name':data_list_line[0],
-						'latlg':[parseFloat(data_list_line[1].split(' ')[0]),parseFloat(data_list_line[1].split(' ')[1])],
-						'type':data_list_line[2],
-						'excursion_journee':data_list_line[3],
-						'description':data_list_line[4],
-						'lien':data_list_line[5],
-						'scale':data_list_line[6]
+						'id':data_list_line[0],
+						'name':data_list_line[1],
+						'latlg':[parseFloat(data_list_line[2].split(' ')[0]),parseFloat(data_list_line[2].split(' ')[1])],
+						'type':data_list_line[3],
+						'excursion_journee':data_list_line[4],
+						'description':data_list_line[5],
+						'lien':data_list_line[6],
+						'scale':data_list_line[7]
 					}
 				);
 			}
+			
 			data_object_list.sort((a, b) => (a.name > b.name) ? 1 : -1)
             initialize(data_object_list);
         },
@@ -308,6 +310,9 @@
 		var topic2 = L.layerGroup();
 		var mariage = L.layerGroup();
 		
+		var marker_list = [];
+		
+		
 		for(var i=0; i<list_object.length; i++){
 		
 			var popup_clic_content = "<div>" +
@@ -315,7 +320,7 @@
 			"<p class='popuptext'>" + list_object[i].description + "</p>" +
 			"<a class='popuptext' href='" + list_object[i].lien + "'>" + list_object[i].lien + "</a>" +
 			"</div>";
-			
+
 			if(list_object[i].type == 'Ville' && list_object[i].scale == '1'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -326,7 +331,8 @@
 					iconAnchor:   [25, 15], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities1);
+				marker_list.push(marker);
 			
 			} else if(list_object[i].type == 'Ville' && list_object[i].scale == '2'){
 				var myicon;
@@ -338,7 +344,9 @@
 					iconAnchor:   [25, 15], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities2);
+				marker_list.push(marker);
+			
 			
 			} else if(list_object[i].type == 'Parc' && list_object[i].scale == '1'){
 				var myicon;
@@ -350,7 +358,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			
 			} else if(list_object[i].type == 'Parc' && list_object[i].scale == '2'){
 				var myicon;
@@ -362,7 +372,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			
 			} else if(list_object[i].type == 'Culturel' && list_object[i].scale == '1'){
 				var myicon;
@@ -374,7 +386,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Culturel' && list_object[i].scale == '2'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -385,7 +399,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Rues' && list_object[i].scale == '1'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -396,7 +412,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Rues' && list_object[i].scale == '2'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -407,7 +425,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Paysage' && list_object[i].scale == '1'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -418,7 +438,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Paysage' && list_object[i].scale == '2'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -429,7 +451,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Plage' && list_object[i].scale == '1'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -440,7 +464,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Plage' && list_object[i].scale == '2'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -451,7 +477,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Resto' && list_object[i].scale == '1'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -462,7 +490,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic1);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'Resto' && list_object[i].scale == '2'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -473,7 +503,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'mariage'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -484,7 +516,9 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(mariage);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(mariage);
+				marker_list.push(marker);
+			
 			} else if(list_object[i].type == 'hotels_mariage'){
 				var myicon;
 				myicon = new L.DivIcon({
@@ -495,34 +529,15 @@
 					iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 				})
-				var marker = new L.marker(list_object[i].latlg,{icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				var marker = new L.marker(list_object[i].latlg,{id:list_object[i].id, icon: myicon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(topic2);
+				marker_list.push(marker);
+			
 			}
 			
 			
 		
 			
-		}
-		/*
-		var topic = L.layerGroup();
-		for(var i=0; i<list_topic.length; i++){
-			var icon;
-			if(list_topic[i].type == 'Parc'){
-				icon = parc_Icon;
-			} else if(list_topic[i].type == 'MusÃ©e'){
-				icon = museum_Icon;
-			}
-			
-			var popup_clic_content = "<div>" +
-			"<h5>" + list_cities[i].name + "</h5>" +
-			"<p class='popuptext'>" + list_cities[i].description + "</p>" +
-			"<p class='popuptext'>" + list_cities[i].lien + "</p>" +
-			"</div>"
-			
-			var marker = new L.marker(list_cities[i].latlg,{icon: icon, riseOnHover:true}).bindPopup(popup_clic_content).addTo(cities);
-		}
-		*/
-		
-		
+		}	
 		
 		cities1.addTo(map);
 		cities2.addTo(map);
@@ -547,6 +562,11 @@
 			 map.addLayer(mariage);
 			}
 		});
+		
+		var map_height = $("#map").height();
+		$("#map_items").height(map_height);
+		$("#map_items_list").height(map_height/1.4);
+		
 		
 		
 		for(var i = 0; i<list_object.length; i++){
@@ -575,18 +595,26 @@
 			
 			
 		
-			var html_item = "<div id='map_items_item_" + i + "' class='map_items_item' lglat="+ list_object[i].latlg + " scale="+ list_object[i].scale + ">" +
+			var html_item = "<div id='map_items_item_" + list_object[i].id + "' class='map_items_item' lglat="+ list_object[i].latlg + " scale="+ list_object[i].scale + ">" +
 				img_html +
 				list_object[i].name +
 			"</div>"
 			$("#map_items_list").append(html_item);
-			$("#map_items_item_" + i).on( "click", function() {
+			$("#map_items_item_" + list_object[i].id).on( "click", function() {
 			  var scale = $( this ).attr("scale");
 			  var lglat_i = $( this ).attr("lglat");
+			  for(var j=0; j<marker_list.length; j++){
+					if(marker_list[j].options.id == $( this ).attr('id').split('_')[3]){
+					console.log(marker_list[j])
+						marker_list[j].openPopup();
+					}
+				}
 			  if(scale == 1){
-				map.setView(lglat_i.split(','), 10)
+				map.flyTo(lglat_i.split(','), 10);
+				
+				
 			  } else if(scale == 2){
-				map.setView(lglat_i.split(','), 13)
+				map.flyTo(lglat_i.split(','), 13);
 			  }
 			});
 		}
