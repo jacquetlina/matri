@@ -1,28 +1,5 @@
-name;latlg;type;excursion_journee;description;lien;scale 
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
-Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
-Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
+id;name;latlg;type;excursion_journee;description;lien;scale 
+1;Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
+2;Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
+3;Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
+5;Test;4.901860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
