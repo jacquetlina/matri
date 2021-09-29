@@ -1989,3 +1989,12 @@ textarea {
 		  bottom: 0;
 		  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 		}
+		
+		#clic_text {
+			color: rgba(255, 255, 255, 0.7);
+			text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 20px;
+	    font-family: "Cormorant Garamond", Georgia, serif;
+		}
+		
