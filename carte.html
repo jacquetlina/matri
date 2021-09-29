@@ -314,7 +314,8 @@
 		
 		
 		for(var i=0; i<list_object.length; i++){
-		
+		console.log(list_object[i])
+			console.log(list_object[i].type,list_object[i].scale)
 			var popup_clic_content = "<div>" +
 			"<h5>" + list_object[i].name + "</h5>" +
 			"<p class='popuptext'>" + list_object[i].description + "</p>" +
@@ -322,6 +323,7 @@
 			"</div>";
 
 			if(list_object[i].type == 'Ville' && list_object[i].scale == '1'){
+			console.log(list_object[i].type)
 				var myicon;
 				myicon = new L.DivIcon({
 					className: 'my-div-icon',
@@ -545,6 +547,12 @@
 		topic2.addTo(map);
 		mariage.addTo(map)
 		
+		map.addLayer(cities1); 
+			map.removeLayer(cities2); 
+			 map.addLayer(topic1);
+			 map.removeLayer(topic2);
+			 map.addLayer(mariage);
+		
 		map.on('zoomend', function() {
 			var currentZoom = map.getZoom();
 			if(currentZoom >= 12) {
@@ -572,27 +580,27 @@
 		for(var i = 0; i<list_object.length; i++){
 		
 			var img_html='';
-			if(list_object[i].type='Ville'){
+			
+			if(list_object[i].type=='Ville'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandaredicon.png" + "'/>";
-			} else if('Parc'){
+			} else if(list_object[i].type=='Parc'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandagreenicon.png" + "'/>";
-			} else if('Culturel'){
+			} else if(list_object[i].type=='Culturel'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandabrownicon.png" + "'/>";
-			} else if('Rues'){
+			} else if(list_object[i].type=='Rues'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandablackicon.png" + "'/>";
-			} else if('Paysage'){
+			} else if(list_object[i].type=='Paysage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandadarkgreenicon.png" + "'/>";
-			} else if('Plage'){
+			} else if(list_object[i].type=='Plage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandayellowicon.png" + "'/>";
-			} else if('Resto'){
+			} else if(list_object[i].type=='Resto'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandablueicon.png" + "'/>";
-			} else if('mariage'){
+			} else if(list_object[i].type=='mariage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandaorangeicon.png" + "'/>";
-			} else if('hotels_mariage'){
+			} else if(list_object[i].type=='hotels_mariage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandaorangeicon.png" + "'/>";
 			}
 						
-			
 			
 		
 			var html_item = "<div id='map_items_item_" + list_object[i].id + "' class='map_items_item' lglat="+ list_object[i].latlg + " scale="+ list_object[i].scale + ">" +
