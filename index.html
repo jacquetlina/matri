@@ -50,13 +50,14 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
 	</head>
-	<body>
+	<body onload="initialize()">
 		
 	<div class="fh5co-loader"></div>
 	
@@ -103,7 +104,9 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+						<div id="d3dontent" style="width:1200px; height:800px; margin:5%;">
+						</div>
+						<<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
 							<h1>Lina <em>&amp;</em> Jacques </h1>
 							<h2>13 août 2022</h2>
 						</div>
@@ -310,4 +313,393 @@
 
 	</body>
 </html>
+<script type="text/javascript">
+	function initialize() {
+		var d3height = 800;
+		var d3width = 1200;
+		
+		//var d3height = $("#fh5co-header").height();
+		//var d3width = $("#fh5co-header").width();
+		
+		
+		var svg = d3.select("#d3dontent").append("svg").attr("id", "svg_draw").attr("width", d3width).attr("height", d3height)
+		
+		let myScale_width = d3.scale.linear()
+		  .domain([0, 1200])
+		  .range([0, d3width]);
+		  
+		let myScale_height = d3.scale.linear()
+		  .domain([0, 800])
+		  .range([0, d3height]);
+		
+		
+		//svg.append("circle").attr("id", 'test_circle').attr("cx", 1).attr("cy", 7).attr("r", 25).style("fill", "purple");
+		
+		
+		
+		svg.append('svg:foreignObject')
+		.attr('id', 'basemap')
+		.attr('class', 'handle')
+		.attr('x',  myScale_width(0))
+		.attr('y', myScale_height(0))
+		.attr('height',  myScale_height(2238))
+		.attr('width', myScale_width(4000))
+		.attr("transform", "translate(" + myScale_width(-550) + "," + myScale_height(-1000) + ")")
+		.html('<div class="base_map_div" style="height:' + myScale_height(2238) + '; width:' + myScale_width(4000) + '"></div>')
+			
+		var panda_group =svg.append('g').attr('id', 'panda_group');
+		
+		panda_group.append('svg:foreignObject')
+		.attr('id', 'panda1')
+		.attr('class', 'handle')
+		.attr('x',  myScale_width(0))
+		.attr('y', myScale_height(0))
+		.attr('height',  myScale_height(72))
+		.attr('width', myScale_width(160))
+		.html('<div id="panda1_div_id" class="panda1_div"></div>')
+		.style('opacity', 0);
+		
+		d3.select('#panda1').attr("transform", "translate(" + myScale_width(500) + "," + myScale_height(280) + ")")
+		
+		panda_group.append('svg:foreignObject')
+		.attr('id', 'panda2')
+		.attr('class', 'handle')
+		.attr('x',  myScale_width(0))
+		.attr('y', myScale_height(0))
+		.attr('height',  myScale_height(72))
+		.attr('width', myScale_width(160))
+		.html('<div id="panda2_div_id" class="panda2_div"></div>')
+		.style('opacity', 0);
+		
+		d3.select('#panda2').attr("transform", "translate(" + myScale_width(500) + "," + myScale_height(210) + ")")
+		
+		
+		
+		svg.append('svg:foreignObject')
+		.attr('id', 'invite')
+		.attr('class', 'handle')
+		.attr('x',  myScale_width(0))
+		.attr('y', myScale_height(0))
+		.attr('height',  myScale_height(800))
+		.attr('width', myScale_width(1200))
+		.html('<div id="invite_div"></div>')
+		.style('opacity', 0);
+		
+		
+		document.getElementById('panda1_div_id').style.zIndex  = 3000
+		document.getElementById('panda2_div_id').style.zIndex  = 4000
+		document.getElementById('invite_div').style.zIndex  = 5000
+		
+		/*
 
+		var lineData = [ 
+		  { "x": 1,   "y": 5},  
+		  { "x": 50,  "y": 100},
+		  { "x": 200,  "y": 150}, 
+		  { "x": 250,  "y": 480},
+		  { "x": 360,  "y": 500},  
+		  { "x": 100, "y": 60}
+		];
+		  
+		//The line SVG Path we draw
+		var lineGraph = svg.append("path")
+		  .attr("d", d3.svg.line()
+		  .x(function(d) { return d.x; })
+		  .y(function(d) { return d.y; })
+		  .interpolate('linear')(lineData))
+		  .attr("stroke", "blue")
+		  .attr("stroke-width", 2)
+		  .attr("fill", "none");
+		
+		
+		setTimeout(function(){ 
+		
+		console.log(d3.select('#test_circle'))
+			d3.select('#test_circle').transition()
+			.delay(250)
+			.duration(4000)
+			.ease("linear")
+			.tween("pathTween", function(){return pathTween(lineGraph)})
+
+		}, 2000);
+		*/
+		
+		
+		setTimeout(function(){ 
+					
+			var element_list = document.getElementsByClassName('panda1_div') 
+			for(var i = 0; i < element_list.length; i++)
+			{
+				element_list[i].className = " panda1_div_reverse";
+			}
+			
+			var element_list = document.getElementsByClassName('panda2_div') 
+			for(var i = 0; i < element_list.length; i++)
+			{
+				element_list[i].className = " panda2_div_reverse";
+			}
+		
+		}, 1000);
+		
+		setTimeout(function(){ 
+					
+			var element_list = document.getElementsByClassName('panda1_div_reverse') 
+			for(var i = 0; i < element_list.length; i++)
+			{
+				element_list[i].className = " panda1_div";
+			}
+			
+			var element_list = document.getElementsByClassName('panda2_div_reverse') 
+			for(var i = 0; i < element_list.length; i++)
+			{
+				element_list[i].className = " panda2_div";
+			}
+		
+		}, 2000);
+		
+		setTimeout(function(){ 
+		
+			d3.select('#panda1').transition()
+			.duration(2000).style('opacity', 1);
+					
+		}, 3000);
+		
+		
+		//aller
+		//1
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-500)  + "," + myScale_height(-780) + ")").ease("linear");
+
+			document.getElementById('panda1_div_id').className = "panda1_div_reverse";
+			
+		}, 6000);
+		//2
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-700)  + "," + myScale_height(-680) + ")").ease("linear");
+
+			document.getElementById('panda1_div_id').className = "panda1_div";	
+			
+		}, 8400);
+		//3
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-900)  + "," + myScale_height(-550) + ")").ease("linear")				
+		}, 10800);
+		//4
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1100)  + "," + myScale_height(-500) + ")").ease("linear")				
+		}, 13200);
+		//5
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1320)  + "," + myScale_height(-500) + ")").ease("linear")				
+		}, 15600);
+		//6
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1350)  + "," + myScale_height(-550) + ")").ease("linear")	
+			d3.select('#panda1').transition().duration(2400).attr("transform", "translate(" + myScale_width(480)  + "," + myScale_height(280) + ")").ease("linear")	
+
+			var element_list = document.getElementsByClassName('panda2_div') 
+			for(var i = 0; i < element_list.length; i++)
+			{
+				element_list[i].className = " panda2_div_reverse";
+			}
+		}, 18000);
+		
+		//danse
+		setTimeout(function(){ 
+		
+			d3.select('#panda2').transition()
+			.duration(2000).style('opacity', 1);
+			
+			document.getElementById('panda2_div_id').className = "panda1_div_reverse";	
+			
+			(() => {
+			  const list = document.querySelector("#panda_group");
+			  list.appendChild(list.firstElementChild);
+			})();
+					
+		}, 20000);
+	
+		//1
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(1000).attr("transform", "translate(" + myScale_width(620 )  + "," + myScale_height(280) + ")").ease("linear")		
+
+			document.getElementById('panda2_div_id').className = "panda1_div";				
+		}, 22000);
+		
+		setTimeout(function(){ 		
+			document.getElementById('panda2_div_id').className = "panda1_div_reverse";				
+		}, 23000);
+		
+		//2
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(500 )  + "," + myScale_height(320) + ")").ease("linear")	
+
+			document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
+			
+			(() => {
+			  const list = document.querySelector("#panda_group");
+			  list.appendChild(list.firstElementChild);
+			})();
+			
+		}, 24000);
+		
+		//3
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(400 )  + "," + myScale_height(320) + ")").ease("linear")				
+		}, 24300);
+		
+		//4
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(350 )  + "," + myScale_height(280) + ")").ease("linear")	
+				document.getElementById('panda1_div_id').className = "panda1_div_reverse";	
+		}, 24600);
+		
+		//5
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(400 )  + "," + myScale_height(230) + ")").ease("linear")		
+
+			document.getElementById('panda2_div_id').className = "panda2_div";	
+			
+			(() => {
+			  const list = document.querySelector("#panda_group");
+			  list.appendChild(list.firstElementChild);
+			})();
+		}, 24900);
+		
+		//6
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(450 )  + "," + myScale_height(200) + ")").ease("linear")				
+		}, 25200);
+		
+		//7
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(500 )  + "," + myScale_height(200) + ")").ease("linear")	
+				document.getElementById('panda1_div_id').className = "panda1_div";	
+		}, 25500);
+		
+		//8
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(220) + ")").ease("linear")				
+		}, 25800);
+		
+		//9
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(620 )  + "," + myScale_height(280) + ")").ease("linear")			
+				document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
+		}, 26100);
+		
+		//10
+		setTimeout(function(){ 		
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(590 )  + "," + myScale_height(280) + ")").ease("linear");
+
+			(() => {
+			  const list = document.querySelector("#panda_group");
+			  list.appendChild(list.firstElementChild);
+			})();
+
+			
+		}, 26400);
+		
+		setTimeout(function(){ 		
+			document.getElementById('panda2_div_id').className = "panda1_div_reverse";	
+		}, 26700);
+		
+		
+		
+		//retour
+		//1
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(1000).attr("transform", "translate(" + myScale_width(-1300 )  + "," + myScale_height(-700) + ")").ease("linear");
+			
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(300) + ")").ease("linear")	
+
+			document.getElementById('panda1_div_id').className = "panda2_div_reverse";
+			document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
+			
+		}, 29000);
+		
+		//3
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-1150 )  + "," + myScale_height(-800) + ")").ease("linear");			
+		}, 30000);
+		
+		//4
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-1050 )  + "," + myScale_height(-850) + ")").ease("linear");			
+		}, 30700);
+		
+		//5
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-900 )  + "," + myScale_height(-900) + ")").ease("linear");			
+		}, 31400);
+		
+		//6
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-800 )  + "," + myScale_height(-950) + ")").ease("linear");			
+		}, 32100);
+		
+		//7
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-700 )  + "," + myScale_height(-980) + ")").ease("linear");			
+		}, 32800);
+		
+		//8
+		setTimeout(function(){ 		
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-550 )  + "," + myScale_height(-1000) + ")").ease("linear");		
+			d3.select('#panda1').transition().duration(300).attr("transform", "translate(" + myScale_width(450 )  + "," + myScale_height(280) + ")").ease("linear")	
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(280) + ")").ease("linear")	
+		}, 33500);
+		
+		setTimeout(function(){ 		
+			document.getElementById('panda1_div_id').className = "panda1_div";
+			document.getElementById('panda2_div_id').className = "panda1_div_reverse";	
+		}, 34200);
+		
+			
+			
+		//texte	
+		/*
+		setTimeout(function(){ 		
+			d3.select('#invite').transition()
+			.duration(3000).style('opacity', 1);
+		}, 36000);
+			
+		*/
+		
+		setTimeout(function(){ 		
+			d3.select('#svg_draw').transition()
+			.duration(3000).style('opacity', 0);
+		}, 36000);
+		
+		
+		
+		
+		$( "#svg_draw" ).on( "click", function() {
+		  d3.select('#svg_draw').transition()
+			.duration(1500).style('opacity', 0);
+		});
+		
+		/*
+		setTimeout(function(){ 
+					
+			d3.select('#test_circle').transition()
+			.delay(250)
+			.duration(4000).attr("transform", "translate(0," + 500 + ")").ease("linear")
+		
+		}, 2000);
+		
+		*/
+	}
+
+	function pathTween(path){
+			var length = path.node().getTotalLength(); // Get the length of the path
+			var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+			return function(t){
+				var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+				d3.select(this) // Select the circle
+					.attr("cx", point.x) // Set the cx
+					.attr("cy", point.y) // Set the cy
+			}
+		}
+	
+</script>
