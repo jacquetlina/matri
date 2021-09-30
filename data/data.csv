@@ -6,15 +6,15 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 5;Desierto de la Tatacoa;3.2341327324199214 -75.1721414319688;Ville;true;incoming;incoming;1
 6;Guatape;6.2344877474957086 -75.15854136937716;Ville;true;incoming;incoming;1
 7;Jardin;5.598945134752644 -75.819489717628;Ville;true;incoming;incoming;1
-8;Laguna de Tota;5.515157294080282 -72.98480560764479;Paysage;true;incoming;incoming;2
+8;Laguna de Tota;5.515157294080282 -72.98480560764479;Parc;true;incoming;incoming;2
 9;Mompox;9.240336951319557 -74.42552621750144;Ville;true;incoming;incoming;1
-10;Parque del café;4.540536575802904 -75.76998290725912;Paysage;true;incoming;incoming;2
-11;Parque Tayrona;11.306640776776478 -74.06587411655799;Paysage;true;incoming;incoming;2
+10;Parque del café;4.540536575802904 -75.76998290725912;Parc;true;incoming;incoming;2
+11;Parque Tayrona;11.306640776776478 -74.06587411655799;Parc;true;incoming;incoming;2
 12;Popayan;2.444692901138408 -76.61349611968653;Ville;true;incoming;incoming;1
 13;Raquira;5.538706157551568 -73.63245384759436;Ville;true;incoming;incoming;1
 14;Salento (zone cafetiere);4.637203138060767 -75.56872870695958;Ville;true;incoming;incoming;1
 15;Santa Fé de Antioquia;6.557050988281404 -75.82682909393966;Ville;true;incoming;incoming;1
-16;Valle del Cocora;4.639310339212306 -75.49448685207057;Paysage;true;incoming;incoming;2
+16;Valle del Cocora;4.639310339212306 -75.49448685207057;Parc;true;incoming;incoming;2
 17;Villa de Leyva;5.636499363355838 -73.52667230910929;Ville;true;incoming;incoming;1
 18;Palau eventos;6.151050030910471 -75.56086182772086;mariage;true;incoming;incoming;2
 19;Jardin botanique;6.270663225739827 -75.56422113201315;Culturel;true;incoming;incoming;2
