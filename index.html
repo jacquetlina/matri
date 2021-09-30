@@ -98,14 +98,15 @@
 		<!-- </div> -->
 	</nav>
 
+	<div id="d3dontent">
+	</div>	
 	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url(images/redpanda.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<div class="display-t js-fullheight">
-						<div id="d3dontent" style="width:1200px; height:800px; margin:5%;">
-						</div>						
+											
 						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
 							<h1>Lina <em>&amp;</em> Jacques </h1>
 							<h2>13 août 2022</h2>
@@ -315,63 +316,120 @@
 </html>
 <script type="text/javascript">
 	function initialize() {
-		var d3height = 800;
-		var d3width = 1200;
 		
-		//var d3height = $("#fh5co-header").height();
-		//var d3width = $("#fh5co-header").width();
+		var d3height = $("#fh5co-header").height();
+		var d3width = $("#fh5co-header").width();
 		
+		$("#d3dontent").height(d3height);
+		$("#d3dontent").width(d3width);
+		
+		var img_height;
+		var img_width;
+		
+		if(d3height>d3width){
+			img_height = d3height*2.5;
+			img_width = img_height * (4000/2238);
+			
+		} else {
+			img_width = d3width*2.5;
+			img_height = img_width * (2238/4000);
+		}
+		
+		var panda1_w = img_width * (135/4000);
+		var panda1_h = img_height * (65/2238);
+		
+		var panda2_w = img_width * (162/4000);
+		var panda2_h = img_height * (72/2238);
 		
 		var svg = d3.select("#d3dontent").append("svg").attr("id", "svg_draw").attr("width", d3width).attr("height", d3height)
 		
 		let myScale_width = d3.scale.linear()
-		  .domain([0, 1200])
+		  .domain([0, 1000])
 		  .range([0, d3width]);
 		  
 		let myScale_height = d3.scale.linear()
-		  .domain([0, 800])
+		  .domain([0, 1000])
 		  .range([0, d3height]);
+		  
+		let myScaleimage_width = d3.scale.linear()
+		  .domain([0, 1000])
+		  .range([0, img_width]);
+		  
+		let myScaleimage_height = d3.scale.linear()
+		  .domain([0, 1000])
+		  .range([0, img_height]);
+		
+		var x_map_point_base_map = function(x_map){
+			return (-(img_width - d3width)/2 + myScaleimage_width(x_map))
+		}
+		
+		var y_map_point_base_map = function(y_map){
+			return (-(img_height - d3height)/2 +myScaleimage_height(y_map))
+		}
 		
 		
 		//svg.append("circle").attr("id", 'test_circle').attr("cx", 1).attr("cy", 7).attr("r", 25).style("fill", "purple");
 		
 		
+		/*
+		svg.append('svg:foreignObject')
+		.attr('id', 'basemap')
+		.attr('class', 'handle')
+		.attr('x',  0)
+		.attr('y', 0)
+		.attr('height',  2238)
+		.attr('width', 4000)
+		.attr("transform", "translate(" + myScale_width(-200) + "," + myScale_height(-1150) + ")")
+		.html('<div class="base_map_div" style="height:' + 2238 + '; width:' + 4000 + '"></div>')
+		
+		*/
 		
 		svg.append('svg:foreignObject')
 		.attr('id', 'basemap')
 		.attr('class', 'handle')
-		.attr('x',  myScale_width(0))
-		.attr('y', myScale_height(0))
-		.attr('height',  myScale_height(2238))
-		.attr('width', myScale_width(4000))
-		.attr("transform", "translate(" + myScale_width(-550) + "," + myScale_height(-1000) + ")")
-		.html('<div class="base_map_div" style="height:' + myScale_height(2238) + '; width:' + myScale_width(4000) + '"></div>')
-			
+		.attr('x',  0)
+		.attr('y', 0)
+		.attr('height',  img_height)
+		.attr('width', img_width)
+		//.attr("transform", "translate(" + x_map_point_base_map(960) + "," + y_map_point_base_map(-130) + ")")
+		.attr("transform", "translate(" + x_map_point_base_map(235) + "," + y_map_point_base_map(-55) + ")")
+		.html('<div class="base_map_div"></div>')
+		
+		$(".base_map_div").height(img_height);
+		$(".base_map_div").width(img_width);
+		
+		
 		var panda_group =svg.append('g').attr('id', 'panda_group');
 		
 		panda_group.append('svg:foreignObject')
 		.attr('id', 'panda1')
 		.attr('class', 'handle')
-		.attr('x',  myScale_width(0))
-		.attr('y', myScale_height(0))
-		.attr('height',  myScale_height(72))
-		.attr('width', myScale_width(160))
+		.attr('x',  0)
+		.attr('y', 0)
+		.attr('height',  panda2_h)
+		.attr('width', panda2_w)
 		.html('<div id="panda1_div_id" class="panda1_div"></div>')
 		.style('opacity', 0);
 		
-		d3.select('#panda1').attr("transform", "translate(" + myScale_width(500) + "," + myScale_height(280) + ")")
+		$("#panda1_div_id").height(panda1_h);
+		$("#panda1_div_id").width(panda1_w);
+		
+		d3.select('#panda1').attr("transform", "translate(" + myScale_width(500) + "," + myScale_height(500) + ")")
 		
 		panda_group.append('svg:foreignObject')
 		.attr('id', 'panda2')
 		.attr('class', 'handle')
-		.attr('x',  myScale_width(0))
-		.attr('y', myScale_height(0))
-		.attr('height',  myScale_height(72))
-		.attr('width', myScale_width(160))
+		.attr('x',  0)
+		.attr('y', 0)
+		.attr('height',  panda2_h)
+		.attr('width', panda2_w)
 		.html('<div id="panda2_div_id" class="panda2_div"></div>')
 		.style('opacity', 0);
 		
-		d3.select('#panda2').attr("transform", "translate(" + myScale_width(500) + "," + myScale_height(210) + ")")
+		$("#panda2_div_id").height(panda1_h);
+		$("#panda2_div_id").width(panda1_w);
+		
+		d3.select('#panda2').attr("transform", "translate(" + myScale_width(510) + "," + myScale_height(450) + ")")
 		
 		
 		
@@ -388,11 +446,12 @@
 		newRect = svg.append("text")
 		.attr('id', 'clic_text')
 		.attr("x", myScale_width(20))
-		.attr("y", myScale_height(760))
+		.attr("y", myScale_height(900))
 		.attr("dy", ".35em")
 		.text("Cliquez pour passer")
 		.style('opacity', 0);
 		
+			
 		
 		
 		document.getElementById('panda1_div_id').style.zIndex  = 3000
@@ -432,6 +491,7 @@
 
 		}, 2000);
 		*/
+		
 		
 		
 		setTimeout(function(){ 
@@ -477,44 +537,59 @@
 		}, 3000);
 		
 		
+		
+		
+		
+		
 		//aller
 		//1
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-500)  + "," + myScale_height(-780) + ")").ease("linear");
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + x_map_point_base_map(246) + "," + y_map_point_base_map(35) + ")").ease("linear");
 
 			document.getElementById('panda1_div_id').className = "panda1_div_reverse";
 			
 		}, 6000);
+		
+		
+		
+		
 		//2
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-700)  + "," + myScale_height(-680) + ")").ease("linear");
+			d3.select('#basemap').transition().duration(2600).attr("transform", "translate(" + x_map_point_base_map(200) + "," + y_map_point_base_map(85) + ")").ease("linear");
 
 			document.getElementById('panda1_div_id').className = "panda1_div";	
 			
 		}, 8400);
 		//3
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-900)  + "," + myScale_height(-550) + ")").ease("linear")				
-		}, 10800);
+			d3.select('#basemap').transition().duration(2600).attr("transform", "translate(" + x_map_point_base_map(150) + "," + y_map_point_base_map(120) + ")").ease("linear")				
+		}, 11000);
 		//4
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1100)  + "," + myScale_height(-500) + ")").ease("linear")				
-		}, 13200);
+			d3.select('#basemap').transition().duration(2600).attr("transform", "translate(" + x_map_point_base_map(100) + "," + y_map_point_base_map(150) + ")").ease("linear")				
+		}, 13600);
 		//5
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1320)  + "," + myScale_height(-500) + ")").ease("linear")				
-		}, 15600);
-		//6
+			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + x_map_point_base_map(50) + "," + y_map_point_base_map(150) + ")").ease("linear")				
+		}, 16200);
+		
+				
+		//7
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(2400).attr("transform", "translate(" + myScale_width(-1350)  + "," + myScale_height(-550) + ")").ease("linear")	
-			d3.select('#panda1').transition().duration(2400).attr("transform", "translate(" + myScale_width(480)  + "," + myScale_height(280) + ")").ease("linear")	
+			d3.select('#basemap').transition().duration(800).attr("transform", "translate(" + x_map_point_base_map(35) + "," + y_map_point_base_map(130) + ")").ease("linear")	
+			d3.select('#panda1').transition().duration(800).attr("transform", "translate(" + myScale_width(480)  + "," + myScale_height(500) + ")").ease("linear")	
 
 			var element_list = document.getElementsByClassName('panda2_div') 
 			for(var i = 0; i < element_list.length; i++)
 			{
 				element_list[i].className = " panda2_div_reverse";
-			}
-		}, 18000);
+			}				
+		}, 18600);
+		
+		
+		
+		
+		
 		
 		//danse
 		setTimeout(function(){ 
@@ -530,10 +605,12 @@
 			})();
 					
 		}, 20000);
+		
+		
 	
 		//1
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(1000).attr("transform", "translate(" + myScale_width(620 )  + "," + myScale_height(280) + ")").ease("linear")		
+			d3.select('#panda2').transition().duration(1000).attr("transform", "translate(" + myScale_width(560) + "," + myScale_height(500) + ")").ease("linear")		
 
 			document.getElementById('panda2_div_id').className = "panda1_div";				
 		}, 22000);
@@ -544,8 +621,9 @@
 		
 		//2
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(500 )  + "," + myScale_height(320) + ")").ease("linear")	
-
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" + myScale_width(520) + "," + myScale_height(550) + ")").ease("linear")	
+			$("#panda2_div_id").height(panda2_h);
+			$("#panda2_div_id").width(panda2_w);
 			document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
 			
 			(() => {
@@ -557,18 +635,18 @@
 		
 		//3
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(400 )  + "," + myScale_height(320) + ")").ease("linear")				
-		}, 24300);
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" +  myScale_width(450) + "," + myScale_height(550) + ")").ease("linear")				
+		}, 24400);
 		
 		//4
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(350 )  + "," + myScale_height(280) + ")").ease("linear")	
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" +  myScale_width(410) + "," + myScale_height(500) + ")").ease("linear")	
 				document.getElementById('panda1_div_id').className = "panda1_div_reverse";	
-		}, 24600);
+		}, 24800);
 		
 		//5
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(400 )  + "," + myScale_height(230) + ")").ease("linear")		
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" + myScale_width(450) + "," + myScale_height(450) + ")").ease("linear")		
 
 			document.getElementById('panda2_div_id').className = "panda2_div";	
 			
@@ -576,98 +654,102 @@
 			  const list = document.querySelector("#panda_group");
 			  list.appendChild(list.firstElementChild);
 			})();
-		}, 24900);
+		}, 25200);
 		
 		//6
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(450 )  + "," + myScale_height(200) + ")").ease("linear")				
-		}, 25200);
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" + myScale_width(520) + "," + myScale_height(450) + ")").ease("linear")				
+		}, 25600);
 		
 		//7
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(500 )  + "," + myScale_height(200) + ")").ease("linear")	
+			d3.select('#panda2').transition().duration(400).attr("transform", "translate(" + myScale_width(560) + "," + myScale_height(500) + ")").ease("linear")	
 				document.getElementById('panda1_div_id').className = "panda1_div";	
-		}, 25500);
+		}, 26000);
+		
 		
 		//8
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(220) + ")").ease("linear")				
-		}, 25800);
-		
-		//9
-		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(620 )  + "," + myScale_height(280) + ")").ease("linear")			
+			d3.select('#panda2').transition().duration(200).attr("transform", "translate(" + myScale_width(550) + "," + myScale_height(500) + ")").ease("linear")	
 				document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
-		}, 26100);
+		}, 26400);
 		
-		//10
+		
 		setTimeout(function(){ 		
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(590 )  + "," + myScale_height(280) + ")").ease("linear");
-
+			document.getElementById('panda2_div_id').className = "panda1_div_reverse";
 			(() => {
 			  const list = document.querySelector("#panda_group");
 			  list.appendChild(list.firstElementChild);
-			})();
-
-			
-		}, 26400);
-		
-		setTimeout(function(){ 		
-			document.getElementById('panda2_div_id').className = "panda1_div_reverse";	
-		}, 26700);
+			})();	
+			$("#panda2_div_id").height(panda1_h);
+			$("#panda2_div_id").width(panda1_w);			
+		}, 26600);
 		
 		
 		
 		//retour
 		//1
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(1000).attr("transform", "translate(" + myScale_width(-1300 )  + "," + myScale_height(-700) + ")").ease("linear");
+			d3.select('#basemap').transition().duration(1000).attr("transform", "translate(" + x_map_point_base_map(50) + "," + y_map_point_base_map(68) + ")").ease("linear");
 			
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(300) + ")").ease("linear")	
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(520)  + "," + myScale_height(550) + ")").ease("linear")	
 
 			document.getElementById('panda1_div_id').className = "panda2_div_reverse";
 			document.getElementById('panda2_div_id').className = "panda2_div_reverse";	
+			$("#panda1_div_id").height(panda2_h);
+			$("#panda1_div_id").width(panda2_w);
+			$("#panda2_div_id").height(panda2_h);
+			$("#panda2_div_id").width(panda2_w);
 			
 		}, 29000);
 		
+		
+		
 		//3
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-1150 )  + "," + myScale_height(-800) + ")").ease("linear");			
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + x_map_point_base_map(75) + "," + y_map_point_base_map(40) + ")").ease("linear");			
 		}, 30000);
 		
 		//4
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-1050 )  + "," + myScale_height(-850) + ")").ease("linear");			
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + x_map_point_base_map(100) + "," + y_map_point_base_map(10) + ")").ease("linear");			
 		}, 30700);
 		
 		//5
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-900 )  + "," + myScale_height(-900) + ")").ease("linear");			
+			d3.select('#basemap').transition().duration(900).attr("transform", "translate(" + x_map_point_base_map(135) + "," + y_map_point_base_map(-15) + ")").ease("linear");			
 		}, 31400);
+		
+		
 		
 		//6
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-800 )  + "," + myScale_height(-950) + ")").ease("linear");			
-		}, 32100);
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + x_map_point_base_map(160) + "," + y_map_point_base_map(-30) + ")").ease("linear");			
+		}, 32300);
 		
 		//7
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-700 )  + "," + myScale_height(-980) + ")").ease("linear");			
-		}, 32800);
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + x_map_point_base_map(210) + "," + y_map_point_base_map(-40) + ")").ease("linear");			
+		}, 33000);
 		
 		//8
 		setTimeout(function(){ 		
-			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + myScale_width(-550 )  + "," + myScale_height(-1000) + ")").ease("linear");		
-			d3.select('#panda1').transition().duration(300).attr("transform", "translate(" + myScale_width(450 )  + "," + myScale_height(280) + ")").ease("linear")	
-			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(550 )  + "," + myScale_height(280) + ")").ease("linear")	
-		}, 33500);
+			d3.select('#basemap').transition().duration(700).attr("transform", "translate(" + x_map_point_base_map(235) + "," + y_map_point_base_map(-55) + ")").ease("linear");		
+			d3.select('#panda1').transition().duration(300).attr("transform", "translate(" + myScale_width(467 )  + "," + myScale_height(500) + ")").ease("linear")	
+			d3.select('#panda2').transition().duration(300).attr("transform", "translate(" + myScale_width(532 )  + "," + myScale_height(500) + ")").ease("linear")	
+		}, 33700);
 		
 		setTimeout(function(){ 		
 			document.getElementById('panda1_div_id').className = "panda1_div";
 			document.getElementById('panda2_div_id').className = "panda1_div_reverse";	
-		}, 34200);
-		
 			
+			$("#panda1_div_id").height(panda1_h);
+			$("#panda1_div_id").width(panda1_w);
+			$("#panda2_div_id").height(panda1_h);
+			$("#panda2_div_id").width(panda1_w);
+		}, 34400);
+		
+			/*
 			
 		//texte	
 		/*
@@ -677,6 +759,18 @@
 		}, 36000);
 			
 		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		setTimeout(function(){ 		
 			d3.select('#svg_draw').transition()
@@ -690,6 +784,9 @@
 		  d3.select('#svg_draw').transition()
 			.duration(1500).style('opacity', 0);
 		});
+		
+		
+		
 		
 		/*
 		setTimeout(function(){ 
