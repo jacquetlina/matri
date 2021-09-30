@@ -1804,25 +1804,75 @@ textarea {
     line-height: 1 !important;
 }
 
-.my-div-span{
+.panda_map_span{
 	z-index:3000 !important;
 	color: rgba(255, 255, 255, 1) !important;
 	text-shadow: 1.5px 1.5px black;
-	font-size: 18px;
+	font-size: 12px;
 	text-align:center;
 	margin-top:0px;
+	width:100%;
+	display:block;
 }
 
-.my-div-image{
-	width:50px;
-	height:30px;
- 
+.panda_map_div{
+	display:block;
+	width:120px;
+}
+
+.panda_map_img{
+	width:30px;
+	height:18px;
+	margin: auto;
+	display:block;
 }
 
 .my-div-image-mini{
 	width:30px;
 	height:18px;
  
+}
+
+.panda_img_legend{
+	width:60px;
+	height:36px;
+	margin: auto;
+	display:block;
+}
+
+.label_legend{
+	color: rgba(255, 255, 255, 1) !important;
+	font-size: 18px;
+	text-align:center;
+	margin-top:0px;
+	width:100%;
+	display:block;
+}
+
+#map_legend{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 1fr;
+}
+
+#map_legend_item1{
+	grid-column: 1;
+  grid-row: 1;
+}
+
+#map_legend_item2{
+	grid-column: 2;
+  grid-row: 1;
+}
+
+#map_legend_item3{
+	grid-column: 3;
+  grid-row: 1;
+}
+
+#map_legend_item4{
+	grid-column: 4;
+  grid-row: 1;
 }
 
 .map_container{
