@@ -1893,16 +1893,12 @@ textarea {
 		}
 
 		.panda2_div{
-			height: 72px;
-			width: 162px;
 			-webkit-animation-name: panda2;  
 			-webkit-animation-iteration-count: infinite;  
 			-webkit-animation-duration: 0.5s; 
 		}   
 		
 		.panda2_div_reverse{
-			height: 72px;
-			width: 162px;
 			-webkit-animation-name: panda2_reverse;  
 			-webkit-animation-iteration-count: infinite;  
 			-webkit-animation-duration: 0.5s; 
@@ -1945,16 +1941,12 @@ textarea {
 		}
 
 		.panda1_div{
-			height: 65px;
-			width: 135px;
 			-webkit-animation-name: panda1;  
 			-webkit-animation-iteration-count: infinite;  
 			-webkit-animation-duration: 0.75s; 
 		}  
 		
 		.panda1_div_reverse{
-			height: 65px;
-			width: 135px;
 			-webkit-animation-name: panda1_reverse;  
 			-webkit-animation-iteration-count: infinite;  
 			-webkit-animation-duration: 0.75s; 
@@ -1962,8 +1954,6 @@ textarea {
 		
 		
 		.base_map_div{
-			height: 2238px;
-			width: 4000px;
 			background-image: url("../images/IAX10-0027.jpg"); 
 			background-size: contain;
 		}  
@@ -1984,7 +1974,7 @@ textarea {
 		  width: 100%; /* Full width (cover the whole page) */
 		  height: 100%; /* Full height (cover the whole page) */
 		  top: 0;
-		  left: -7%;
+		  left: 0;
 		  right: 0;
 		  bottom: 0;
 		  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
