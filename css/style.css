@@ -1818,6 +1818,7 @@ textarea {
 .panda_map_div{
 	display:block;
 	width:120px;
+	height: 120px;
 }
 
 .panda_map_img{
