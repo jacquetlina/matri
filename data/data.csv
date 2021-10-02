@@ -33,3 +33,7 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 32;Movich Hotel Las Lomas;6.172714655834706 -75.43494722998689;mariage;true;incoming;http://www.booking.com/Share-wgaOCh;2
 33;Musée de l'or;4.60269385667962 -74.0696536978571;Culturel;true;incoming;incoming;2
 34;Quartier la Candelaria;4.595514518308619 -74.07275161255026;Culturel;true;incoming;incoming;2
+35;Aeropuerto Olaya Herrera;6.219704902885136 -75.58626381204662;mariage;true;incoming;incoming;2
+36;Aeropuerto International el Dorado;4.70123911216484 -74.14608647050581;mariage;true;incoming;incoming;2
+37;Palomino;11.25805032442596 -73.5558408126367;Paysage;true;incoming;incoming;2
+38;Jerico;5.792261019439615 -75.78566127138672;Ville;true;incoming;incoming;2
