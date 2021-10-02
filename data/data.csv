@@ -16,7 +16,7 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 15;Santa Fé de Antioquia;6.557050988281404 -75.82682909393966;Ville;true;incoming;incoming;1
 16;Valle del Cocora;4.639310339212306 -75.49448685207057;Parc;true;incoming;incoming;2
 17;Villa de Leyva;5.636499363355838 -73.52667230910929;Ville;true;incoming;incoming;1
-18;Palau eventos;6.151050030910471 -75.56086182772086;mariage;true;incoming;incoming;2
+18;Palau eventos;6.151050030910471 -75.56086182772086;mariage;true;incoming;incoming;12
 19;Jardin botanique;6.270663225739827 -75.56422113201315;Culturel;true;incoming;incoming;2
 20;Parc Arvi;6.281793197956128 -75.50198445712152;Ville;true;incoming;incoming;2
 21;Escaleras electricas et grafitti tour;6.252925756530015 -75.62545732347016;Ville;true;incoming;incoming;2
@@ -25,9 +25,9 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 24;Musee d'Art moderne;6.224034905036512 -75.57375699946456;Culturel;true;incoming;incoming;2
 25;Pueblito Paisa;6.235801434743509 -75.57971154159414;Culturel;true;incoming;incoming;2
 26;Aeropuerto Internacional José María Córdova;6.17085769169575 -75.42771504663419;Culturel;true;incoming;incoming;1
-27;Hotel Marriott;6.203303807537311 -75.57270558010431;hotels_mariage;true;incoming;http://www.booking.com/Share-OEbQT0;2
-28;Hotel San Fernando Plaza;6.2039066865644585 -75.57070450792241;hotels_mariage;true;incoming;http://www.booking.com/Share-Gu2Fkc;2
-29;Novotel Medellín El Tesoro;6.198260213594984 -75.55824445492475;hotels_mariage;true;incoming;http://www.booking.com/Share-gfSBDg;2
-30;Hotel Dann Carlton Medellin;6.207597482851689 -75.57091025876159;hotels_mariage;true;incoming;http://www.booking.com/Share-8PTeVJ;2
-31;Diez Hotel Categoría Colombia;6.209545619379173 -75.56465260214404;hotels_mariage;true;incoming;http://www.booking.com/Share-K0Kyll;2
-32;Movich Hotel Las Lomas;6.172714655834706 -75.43494722998689;hotels_mariage;true;incoming;http://www.booking.com/Share-wgaOCh;2
+27;Hotel Marriott;6.203303807537311 -75.57270558010431;mariage;true;incoming;http://www.booking.com/Share-OEbQT0;2
+28;Hotel San Fernando Plaza;6.2039066865644585 -75.57070450792241;mariage;true;incoming;http://www.booking.com/Share-Gu2Fkc;2
+29;Novotel Medellín El Tesoro;6.198260213594984 -75.55824445492475;mariage;true;incoming;http://www.booking.com/Share-gfSBDg;2
+30;Hotel Dann Carlton Medellin;6.207597482851689 -75.57091025876159;mariage;true;incoming;http://www.booking.com/Share-8PTeVJ;2
+31;Diez Hotel Categoría Colombia;6.209545619379173 -75.56465260214404;mariage;true;incoming;http://www.booking.com/Share-K0Kyll;2
+32;Movich Hotel Las Lomas;6.172714655834706 -75.43494722998689;mariage;true;incoming;http://www.booking.com/Share-wgaOCh;2
