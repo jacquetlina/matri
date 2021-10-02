@@ -55,8 +55,14 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<script>
+		function initialize(){
+			$("#first_div_offset").height($("#fh5co-started").height()*1.5);
+		}
+	</script>
+	
 	</head>
-	<body>
+	<body onload=initialize();>
 		
 	<div class="fh5co-loader"></div>
 	
@@ -68,24 +74,8 @@
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
 							<li><a href="index.html">Acceuil</a></li>
-							<li class="has-dropdown">
-								<a href="mariage.html">Le Mariage</a>
-								<ul class="dropdown">
-									<li><a href="#">Où?</a></li>
-									<li><a href="#">Quand?</a></li>
-									<li><a href="#">Comment venir?</a></li>
-									<li><a href="#">Où loger?</a></li>
-								</ul>
-							</li>
-							<li class="has-dropdown active">
-								<a href="vacances.html">Passer vos vacances en Colombie</a>
-								<ul class="dropdown">
-									<li><a href="#">Où aller?</a></li>
-									<li><a href="#">Que faire?</a></li>
-									<li><a href="#">Evenements</a></li>
-									<li><a href="#">Venir en Colombie</a></li>
-								</ul>
-							</li>
+							<li><a href="mariage.html">Le Mariage</a></li>
+							<li class="has-dropdown active"><a href="vacances.html">Passer vos vacances en Colombie</a></li>
 							<li><a href="conseils.html">Petits conseils</a></li>
 							<li><a href="carte.html">La carte</a></li>
 							<li><a href="contact.html">Contact</a></li>
@@ -111,53 +101,11 @@
 		</div>
 	</div>
 	
-	<div id="fh5co-about" class="fh5co-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
-					<img src="images/hero_1.jpeg" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-				</div>
-				<div class="col-md-5 col-md-push-1 animate-box">
-					<div class="section-heading">
-						<h2>Carthagène</h2>
-						<p>notre histoire blablabla on est trop beaux</p>
-						<p>Qu'est ce qui va se passer</p>
-						<p><a href="carte.html" class="btn btn-primary btn-outline">retrouvez sur la carte</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div id="first_div_offset"></div>
 	
-	<div id="fh5co-about" class="fh5co-section">
+	<div id="fh5co-featured-menu" class="fh5co-section first_tip_div">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
-					<img src="images/hero_1.jpeg" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-				</div>
-				<div class="col-md-5 col-md-push-1 animate-box">
-					<div class="section-heading">
-						<h2>Bogota</h2>
-						<p>notre histoire blablabla on est trop beaux</p>
-						<p>Qu'est ce qui va se passer</p>
-						<p><a href="carte.html" class="btn btn-primary btn-outline">retrouvez sur la carte</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-featured-menu" class="fh5co-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 fh5co-heading animate-box">
-					<h2>Autres endroits</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Autres endroits qu'on a sélectionner.</p>
-						</div>
-					</div>
-				</div>
 				
 				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap">
 					<div class="fh5co-item animate-box">
@@ -228,119 +176,20 @@
 		</div>
 	</div>
 	
-	<div id="fh5co-featured-menu" class="fh5co-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 fh5co-heading animate-box">
-					<h2>Evenements</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Evenements à voir et à faire</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap">
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_1.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_2.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Le Choco</h3>
-						<span class="fh5co-price">Quand</sup></span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir deux jour</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap">
-					<div class="fh5co-item margin_top animate-box">
-						<img src="images/gallery_3.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_4.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-				</div>
-				<div class="clearfix visible-sm-block visible-xs-block"></div>
-				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap">
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_5.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_6.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap">
-					<div class="fh5co-item margin_top animate-box">
-						<img src="images/gallery_7.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-					<div class="fh5co-item animate-box">
-						<img src="images/gallery_8.jpeg" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
-						<h3>Désert de l'atatacoa</h3>
-						<span class="fh5co-price">Quand</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
-						<p>Prévoir un jour</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="fh5co-featured-menu" class="fh5co-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 fh5co-heading animate-box">
-					<h2>Venir en Colombie</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-
+	
 
 	<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-4 fh5co-widget">
 					<h4>Nous espérons vous voir nombreux en Colombie pour fêter avec nous.</h4>
-					<p>La date arrive bientôt. N'oubliez pas de nous prévenir!</p>
+					<p>Le mariage arrive bientôt. N'oubliez pas de nous prévenir de votre venue!</p>
 				</div>
 				<div class="col-md-2 col-md-push-1 fh5co-widget">
 					<h4>Liens utiles</h4>
 					<ul class="fh5co-footer-links">
-						<li><a href="https://www.laidbacktrip.com/colombia">Blog 1</a></li>
-						<li><a href="https://monvoyageencolombie.com/">Blog 2</a></li>
-						<li><a href="#">Lien 3</a></li>
-						<li><a href="#">Lien 4</a></li>
+						<li><a href="https://www.laidbacktrip.com/colombia">Blog Laidback Trip</a></li>
+						<li><a href="https://monvoyageencolombie.com/">Blog Mon Voyage En Colombie</a></li>
 					</ul>
 				</div>
 
