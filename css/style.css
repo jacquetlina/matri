@@ -2039,3 +2039,16 @@ textarea {
 	    font-family: "Cormorant Garamond", Georgia, serif;
 		}
 		
+		
+		.first_tip_div{
+			clear: none !important;
+			padding-bottom: 0px !important;
+		}
+		
+		.conseils_div{
+			margin-bottom: 0px !important;
+		}
+		
+		.timeline-custom-badge{
+			top:-7px !important;
+		}
