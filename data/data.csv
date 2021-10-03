@@ -2,29 +2,29 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 1;Medellin;6.247006 -75.578236;Ville;true;blablabla;https://www.wikipedia.org;1
 2;Bogota;4.701860 -74.069085;Ville;true;blablabla;https://www.wikipedia.org;1
 3;Cartagena;10.423782 -75.548400;Ville;true;blablabla;https://www.wikipedia.org;1
-4;Barichara;6.636083896300195 -73.22154165507118;Ville;true;incoming;incoming;1
+4;Barichara;6.636083896300195 -73.22154165507118;Ville;true;incoming;incoming;12
 5;Desierto de la Tatacoa;3.2341327324199214 -75.1721414319688;Paysage;true;incoming;incoming;12
 6;Guatape;6.2344877474957086 -75.15854136937716;Ville;true;incoming;incoming;12
 7;Jardin;5.598945134752644 -75.819489717628;Ville;true;incoming;incoming;12
-8;Laguna de Tota;5.515157294080282 -72.98480560764479;Paysage;true;incoming;incoming;2
+8;Laguna de Tota;5.515157294080282 -72.98480560764479;Paysage;true;incoming;incoming;12
 9;Mompox;9.240336951319557 -74.42552621750144;Ville;true;incoming;incoming;12
-10;Parque del café;4.540536575802904 -75.76998290725912;Paysage;true;incoming;incoming;2
+10;Parque del café;4.540536575802904 -75.76998290725912;Paysage;true;incoming;incoming;12
 11;Parque Tayrona;11.306640776776478 -74.06587411655799;Paysage;true;incoming;incoming;12
 12;Popayan;2.444692901138408 -76.61349611968653;Ville;true;incoming;incoming;12
-13;Raquira;5.538706157551568 -73.63245384759436;Ville;true;incoming;incoming;1
-14;Salento (zone cafetiere);4.637203138060767 -75.56872870695958;Ville;true;incoming;incoming;1
-15;Santa Fé de Antioquia;6.557050988281404 -75.82682909393966;Ville;true;incoming;incoming;1
+13;Raquira;5.538706157551568 -73.63245384759436;Ville;true;incoming;incoming;12
+14;Salento (zone cafetiere);4.637203138060767 -75.56872870695958;Ville;true;incoming;incoming;12
+15;Santa Fé de Antioquia;6.557050988281404 -75.82682909393966;Ville;true;incoming;incoming;12
 16;Valle del Cocora;4.639310339212306 -75.49448685207057;Paysage;true;incoming;incoming;12
 17;Villa de Leyva;5.636499363355838 -73.52667230910929;Ville;true;incoming;incoming;12
 18;Palau eventos;6.151050030910471 -75.56086182772086;mariage;true;incoming;incoming;12
-19;Jardin botanique;6.270663225739827 -75.56422113201315;Culturel;true;incoming;incoming;2
+19;Jardin botanique;6.270663225739827 -75.56422113201315;Paysage;true;incoming;incoming;2
 20;Parc Arvi;6.281793197956128 -75.50198445712152;Paysage;true;incoming;incoming;2
 21;Escaleras electricas et grafitti tour;6.252925756530015 -75.62545732347016;Culturel;true;incoming;incoming;2
-22;Parques del rio;6.243638349896972 -75.57909614424176;Ville;true;incoming;incoming;2
+22;Parques del rio;6.243638349896972 -75.57909614424176;Paysage;true;incoming;incoming;2
 23;Musée d'Antioquia et Plaza Botero;6.252603992720243 -75.56830497340876;Culturel;true;incoming;incoming;2
 24;Musée d'Art moderne;6.224034905036512 -75.57375699946456;Culturel;true;incoming;incoming;2
 25;Pueblito Paisa;6.235801434743509 -75.57971154159414;Culturel;true;incoming;incoming;2
-26;Aeropuerto Internacional José María Córdova;6.17085769169575 -75.42771504663419;Culturel;true;incoming;incoming;12
+26;Aeropuerto Internacional José María Córdova;6.17085769169575 -75.42771504663419;mariage;true;incoming;incoming;2
 27;Hotel Marriott;6.203303807537311 -75.57270558010431;mariage;true;incoming;http://www.booking.com/Share-OEbQT0;2
 28;Hotel San Fernando Plaza;6.2039066865644585 -75.57070450792241;mariage;true;incoming;http://www.booking.com/Share-Gu2Fkc;2
 29;Novotel Medellín El Tesoro;6.198260213594984 -75.55824445492475;mariage;true;incoming;http://www.booking.com/Share-gfSBDg;2
@@ -35,5 +35,5 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 34;Quartier la Candelaria;4.595514518308619 -74.07275161255026;Culturel;true;incoming;incoming;2
 35;Aeropuerto Olaya Herrera;6.219704902885136 -75.58626381204662;mariage;true;incoming;incoming;2
 36;Aeropuerto International el Dorado;4.70123911216484 -74.14608647050581;mariage;true;incoming;incoming;2
-37;Palomino;11.25805032442596 -73.5558408126367;Paysage;true;incoming;incoming;2
-38;Jerico;5.792261019439615 -75.78566127138672;Ville;true;incoming;incoming;2
+37;Palomino;11.25805032442596 -73.5558408126367;Paysage;true;incoming;incoming;12
+38;Jerico;5.792261019439615 -75.78566127138672;Ville;true;incoming;incoming;12
