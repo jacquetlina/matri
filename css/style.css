@@ -2048,6 +2048,13 @@ textarea {
 			padding-bottom: 0px !important;
 		}
 		
+		
+		.second_tip_div{
+			clear: none !important;
+			padding-top: 1em !important;
+			padding-bottom: 0px !important;
+		}
+		
 		.conseils_div{
 			margin-bottom: 0px !important;
 		}
