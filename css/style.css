@@ -413,7 +413,8 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-header .display-tc .btn.btn-demo:hover, #fh5co-header .display-tc .btn.btn-demo:focus,
 .fh5co-cover .display-tc .btn.btn-demo:hover,
 .fh5co-cover .display-tc .btn.btn-demo:focus {
-  background: rgba(234, 39, 45, 0.9) !important;
+  /*background: rgba(234, 39, 45, 0.9) !important;*/
+  background: #2790ea !important;
   color: #fff !important;
 }
 #fh5co-header .display-tc .btn:hover,
@@ -1588,8 +1589,10 @@ h1, h2, h3, h4, h5, h6, figure {
   border: 2px solid #2790ea;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background: #ec3e44 !important;
-  border-color: #ec3e44 !important;
+  /*background: #ec3e44 !important;*/
+  /*border-color: #ec3e44 !important;*/
+  background: #2790ea !important;
+  border-color: #2790ea !important;
 }
 .btn-primary.btn-outline {
   -webkit-border-radius: 0px;
