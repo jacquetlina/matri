@@ -1,10 +1,10 @@
 id;name;latlg;type;excursion_journee;description;lien;scale 
-1;Medellin;6.247006 -75.578236;Ville;true;;https://fr.wikipedia.org/wiki/Medell%C3%ADn;1
+1;Medellin;6.247006 -75.578236;Ville;true;;https://monvoyageencolombie.com/visiter-medellin/;1
 2;Bogota;4.701860 -74.069085;Ville;true;;https://fr.wikipedia.org/wiki/Bogota;1
-3;Cartagena de Indias;10.423782 -75.548400;Ville;true;;https://fr.wikipedia.org/wiki/Carthag%C3%A8ne_des_Indes;1
-4;Barichara;6.636083896300195 -73.22154165507118;Ville;true;;https://fr.wikipedia.org/wiki/Barichara;12
+3;Cartagena de Indias;10.423782 -75.548400;Ville;true;;https://monvoyageencolombie.com/visiter-cartagena-que-faire-voir-carthagene/;1
+4;Barichara;6.636083896300195 -73.22154165507118;Ville;true;;https://monvoyageencolombie.com/barichara-visite-beau-village-patrimoine-santander/;12
 5;Desierto de la Tatacoa;3.2341327324199214 -75.1721414319688;Paysage;true;;https://fr.wikipedia.org/wiki/D%C3%A9sert_de_la_Tatacoa;12
-6;Guatape;6.2344877474957086 -75.15854136937716;Ville;true;;https://fr.wikipedia.org/wiki/Guatap%C3%A9;12
+6;Guatape;6.2344877474957086 -75.15854136937716;Ville;true;;https://monvoyageencolombie.com/guatape-el-penol-incontournables-medellin/;12
 7;Jardin;5.598945134752644 -75.819489717628;Ville;true;;https://en.wikipedia.org/wiki/Jard%C3%ADn;12
 8;Laguna de Tota;5.515157294080282 -72.98480560764479;Paysage;true;;https://en.wikipedia.org/wiki/Lake_Tota;12
 9;Mompox;9.240336951319557 -74.42552621750144;Ville;true;;https://fr.wikipedia.org/wiki/Santa_Cruz_de_Mompox;12
@@ -19,7 +19,7 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 18;Palau eventos;6.151050030910471 -75.56086182772086;mariage;true;;;12
 19;Jardin botanique;6.270663225739827 -75.56422113201315;Paysage;true;;;2
 20;Parc Arvi;6.281793197956128 -75.50198445712152;Paysage;true;;;2
-21;Comuna 13 et grafitti tour;6.252925756530015 -75.62545732347016;Culturel;true;;https://maison-monde.com/comuna-13/;2
+21;Comuna 13 et grafitti tour;6.252925756530015 -75.62545732347016;Culturel;true;;https://monvoyageencolombie.com/comuna-13-graffiti-tour-medellin/;2
 22;Parques del rio;6.243638349896972 -75.57909614424176;Paysage;true;;;2
 23;Musée d'Antioquia et Plaza Botero;6.252603992720243 -75.56830497340876;Culturel;true;;https://fr.wikipedia.org/wiki/Mus%C3%A9e_d%27Antioquia;2
 24;Musée d'Art moderne;6.224034905036512 -75.57375699946456;Culturel;true;;;2
@@ -37,12 +37,12 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 36;Aeropuerto International el Dorado;4.70123911216484 -74.14608647050581;mariage;true;;;2
 37;Palomino;11.25805032442596 -73.5558408126367;Paysage;true;;http://lecocotierdore.com/palomino-plage-plus-chill-de-colombie/;12
 38;Jerico;5.792261019439615 -75.78566127138672;Ville;true;;https://monvoyageencolombie.com/visiter-jerico-sublime-village-patrimoine/;12
-39;Parc Naturel d’Utria;6.005658 -77.253182;Paysage;true;;https://www.blog-trotting.fr/voyage/colombie/14652-parc-marin-utria;12
+39;Parc Naturel d’Utria;6.005658 -77.253182;Paysage;true;;https://monvoyageencolombie.com/visiter-parc-naturel-utria-choco-pacifique/;12
 40;Castillo San Felipe de Barajas;10.422443 -75.539253;Culturel;true;;https://fr.wikipedia.org/wiki/Ch%C3%A2teau_de_San_Felipe_de_Barajas;2
 41;Puente de Occidente;6.578052 -75.797677;Culturel;true;;https://es.wikipedia.org/wiki/Puente_de_Occidente;2
 42;Peñón de Guatapé;6.220092 -75.178966;Paysage;true;;https://fr.wikipedia.org/wiki/Pe%C3%B1%C3%B3n_de_Guatap%C3%A9;2
 43;Tour de l’horloge;10.422911 -75.549234;Culturel;true;;;2
-44;Quartier de Getsemani;10.420708 -75.545475;Culturel;true;;;2
+44;Quartier de Getsemani;10.420708 -75.545475;Culturel;true;;https://monvoyageencolombie.com/getsemani-histoire-street-art-cartagena/;2
 45;Centro Storico de Cartagena;10.424188 -75.551042;Culturel;true;;;2
 46;Paramo de Belmira;6.723597 -75.697636;Paysage;true;;https://antioquiaalaire.com/p%C3%A1ramo-de-belmira;12
 47;Ciudad Perdida;11.038262 -73.925169;Paysage;true;;https://fr.wikipedia.org/wiki/Ciudad_Perdida;12
@@ -53,7 +53,7 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 52;Cerro Tusa;5.966401 -75.783108;Paysage;true;;https://es.wikipedia.org/wiki/Cerro_Tusa;12
 53;Caño Cristales;2.264186 -73.794341;Paysage;true;;https://fr.wikipedia.org/wiki/Ca%C3%B1o_Cristales;12
 54;Parc archéologique National de Tierradentro;2.570658 -76.036607;Culturel;true;;https://fr.wikipedia.org/wiki/Parc_arch%C3%A9ologique_national_de_Tierradentro;12
-55;Cali;3.449354 -76.530104;Ville;true;;https://fr.wikipedia.org/wiki/Cali;1
+55;Cali;3.449354 -76.530104;Ville;true;;https://monvoyageencolombie.com/visiter-cali-que-faire-que-voir/;1
 56;Punta Gallina;12.458014 -71.668345;Paysage;true;;https://monvoyageencolombie.com/circuit-desert-guajira-cabo-de-la-vela-punta-gallinas-makuira/;12
 57;Cathédrale de Zipaquira;5.019569 -74.009856;Culturel;true;;https://milesandlove.com/colombie/cathedrale-de-sel-de-zipaquira;12
 58;Parc archéologique San Augustin;1.880760 -76.270309;Culturel;true;;https://fr.wikipedia.org/wiki/Parc_arch%C3%A9ologique_de_San_Agust%C3%ADn;12
