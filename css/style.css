@@ -1890,7 +1890,7 @@ textarea {
 #map {
   grid-column: 1;
   grid-row: 1;
-  min-height:700px;
+  min-height:100px;
 }
 
 #map_items {
