@@ -50,7 +50,7 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="js/d3.v3.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -266,6 +266,8 @@
 		var d3height = $("#fh5co-header").height();
 		var d3width = $("#fh5co-header").width();
 		
+		console.log(d3height,d3width)
+		
 		$("#photo_us").width(d3width/2);
 		$("#img_colombie").width((799/951.5)*$("#photo_us"))
 		
@@ -280,6 +282,7 @@
 		if(d3height>d3width){
 			img_height = d3height*2.5;
 			img_width = img_height * (4000/2238);
+			console.log("ok")
 			
 		} else {
 			img_width = d3width*2.5;
