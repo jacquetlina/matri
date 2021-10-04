@@ -206,6 +206,10 @@
 </html>
 <script type="text/javascript">
 
+	$(".map_container").height($("#map").width()/2);
+	
+	$("#map_items").height($("#map").height());
+
 	$.ajax({
         type: "GET",
         url: "data/data.csv",
@@ -315,11 +319,23 @@
 		
 		
 		for(var i=0; i<list_object.length; i++){
-			var popup_clic_content = "<div>" +
-			"<h5>" + list_object[i].name + "</h5>" +
-			"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
-			"<p class='popuptext' style='text-align:center'><a class='popuptext' target='_blank' href='" + list_object[i].lien + "'>lien</a></p>" +
-			"</div>";
+			
+			var popup_clic_content;
+
+			if(list_object[i].lien.length > 0){
+			
+				popup_clic_content= "<div>" +
+				"<h5>" + list_object[i].name + "</h5>" +
+				"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
+				"<p class='popuptext' style='text-align:center'><a class='popuptext' target='_blank' href='" + list_object[i].lien + "'>lien</a></p>" +
+				"</div>";
+			
+			} else {
+				popup_clic_content= "<div>" +
+				"<h5>" + list_object[i].name + "</h5>" +
+				"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
+				"</div>";
+			}
 
 			if(list_object[i].type == 'Ville'){
 				var myicon;
@@ -411,7 +427,8 @@
 			
 		
 			
-		}	
+		}
+
 		
 		cities1.addTo(map);
 		cities2.addTo(map);
@@ -420,9 +437,7 @@
 		topic12.addTo(map);
 		cities12.addTo(map);
 		
-		map.addLayer(cities1); 
 			map.removeLayer(cities2); 
-			 map.addLayer(topic1);
 			 map.removeLayer(topic2);
 		
 		map.on('zoomend', function() {
