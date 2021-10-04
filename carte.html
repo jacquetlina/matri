@@ -138,7 +138,8 @@
 			
 			</div>
 	</div>
-
+	
+	
 	
 
 
@@ -206,9 +207,37 @@
 </html>
 <script type="text/javascript">
 
-	$(".map_container").height($("#map").width()/2);
+	if($(window).height()> $(window).width()){
+		$(".map_container").css("width","100%");
+		$(".map_container").css("display","grid");
+		$(".map_container").css("grid-template-columns", "1fr");
+		$(".map_container").css("grid-template-rows", "60% 40%");
+		
+		$("#map").css("grid-column", "1");
+		$("#map").css("grid-row", "1");
+		
+		$("#map_items").css("grid-column", "1");
+		$("#map_items").css("grid-row", "2");
+		$("#map_items").height($(".map_items_content").height())
+		
+	} else {
+		$(".map_container").css("width","100%");
+		$(".map_container").css("display","grid");
+		$(".map_container").css("grid-template-columns", "70% 30%");
+		$(".map_container").css("grid-template-rows", "1fr");
+		
+		$("#map").css("grid-column", "1");
+		$("#map").css("grid-row", "1");
+		
+		$("#map_items").css("grid-column", "2");
+		$("#map_items").css("grid-row", "1");
+		
+		$(".map_container").height($("#map").width()/2);
 	
-	$("#map_items").height($("#map").height());
+		$("#map_items").height($("#map").height());
+	
+	}
+
 
 	$.ajax({
         type: "GET",
@@ -504,5 +533,10 @@
 		
     
         map.addLayer(osmLayer);
+		
+		if($(window).height()> $(window).width()){
+			$("#map_items").height($(".map_items_content").height()*2.2)
+			}	
+		
     }
 </script>
