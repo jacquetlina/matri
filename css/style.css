@@ -1901,7 +1901,7 @@ textarea {
 }
 
 .map_items_content{
-	padding: 2em 20px !important;
+	padding: 0px !important;
 }
 
 #map_items_list{
@@ -2068,6 +2068,23 @@ textarea {
 			width: 83.2% !important;
 		}
 		
+		.conseil_column2 {
+			width: 100% !important;
+		}
+		
+		.conseil_column2 h3{
+			color: rgba(255,255,255,1) !important;
+		}
+		
 		.conseil_div {
 			padding-top: 1em !important;
+		}
+		
+		.list_items{
+			padding-bottom:30px !important;
+			color: rgba(255, 255, 255, 0.7) !important;
+		}
+		
+		.list_items_timeline{
+			color: rgba(255, 255, 255, 0.7) !important;
 		}
