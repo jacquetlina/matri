@@ -71,9 +71,9 @@
 				<div class="row">
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
-							<li><a href="index.html">Acceuil</a></li>
+							<li><a href="index.html">Accueil</a></li>
 							<li><a href="mariage.html">Le Mariage</a></li>
-							<li><a href="vacances.html">Passer vos vacances en Colombie</a></li>
+							<li><a href="vacances.html">Passez vos vacances en Colombie</a></li>
 							<li><a href="conseils.html">Petits conseils</a></li>
 							<li class="active"><a href="carte.html">La carte</a></li>
 							<li><a href="contact.html">RSVP</a></li>
@@ -93,6 +93,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Où aller</h2>
 					<p>Cette carte présente l'emplacement des éléments présentés dans les différentes sections. Vous pouvez retrouver ces éléments plus facilement depuis la liste sur la gauche de la carte. Cliquez sur les éléments de la carte pour plus d'informations. Cette liste n'est pas exhaustive, et de nouveaux éléments pourront être ajoutés plus tard.</p>
+					<p>Privilégiez Firefox ou Chrome comme navigateurs, et de préférence un écran d'ordinateur, pour visualiser la carte.</p>
 				</div>
 			</div>
 		</div>
@@ -108,26 +109,26 @@
 							<div class="col-md-12 fh5co-heading animate-box">
 								<h2>Cliquez sur un élement pour le retrouver sur la carte</h2>
 								<div class="row">
-										<div id="map_legend">
-											<div id="map_legend_item1">
-												<img class='panda_img_legend' src='images/pandaredicon.png'/>
-												<span class='label_legend'>Villes et villages à visiter</span>
-											</div>
-											<div id="map_legend_item2">
-												<img class='panda_img_legend' src='images/pandadarkgreenicon.png'/>
-												<span class='label_legend'>Parcs, paysages typiques</span>
-											</div>
-											<div id="map_legend_item3">
-												<img class='panda_img_legend' src='images/pandabrownicon.png'/>
-												<span class='label_legend'>Monuments, quartiers typiques</span>
-											</div>
-											<div id="map_legend_item4">
-												<img class='panda_img_legend' src='images/pandaorangeicon.png'/>
-												<span class='label_legend'>Liés au mariage</span>
-											</div>
+									<div id="map_legend">
+										<div id="map_legend_item1">
+											<img class='panda_img_legend' src='images/pandaredicon.png'/>
+											<span class='label_legend'>Villes et villages à visiter</span>
 										</div>
-										<div id="map_items_list">
+										<div id="map_legend_item2">
+											<img class='panda_img_legend' src='images/pandadarkgreenicon.png'/>
+											<span class='label_legend'>Parcs, paysages typiques</span>
 										</div>
+										<div id="map_legend_item3">
+											<img class='panda_img_legend' src='images/pandabrownicon.png'/>
+											<span class='label_legend'>Monuments, quartiers typiques</span>
+										</div>
+										<div id="map_legend_item4">
+											<img class='panda_img_legend' src='images/pandaorangeicon.png'/>
+											<span class='label_legend'>Liés au mariage</span>
+										</div>
+									</div>
+									<div id="map_items_list">
+									</div>
 								</div>
 							</div>
 							
@@ -138,7 +139,8 @@
 			
 			</div>
 	</div>
-
+	
+	
 	
 
 
@@ -160,7 +162,7 @@
 				<div class="col-md-2 col-md-push-1 fh5co-widget">
 					<h4>Categories</h4>
 					<ul class="fh5co-footer-links">
-						<li><a href="index.html">Acceuil</a></li>
+						<li><a href="index.html">Accueil</a></li>
 						<li><a href="mariage.html">Le Mariage</a></li>
 						<li><a href="vacances.html">Passez vos vacances en Colombie</a></li>
 						<li><a href="conseils.html">Petits conseils</a></li>
@@ -205,6 +207,44 @@
 	</body>
 </html>
 <script type="text/javascript">
+
+	if($(window).height()> $(window).width()){
+		$(".map_container").css("width","100%");
+		$(".map_container").css("display","grid");
+		$(".map_container").css("grid-template-columns", "1fr");
+		$(".map_container").css("grid-template-rows", "20% 80%");
+		
+		$("#map").css("grid-column", "1");
+		$("#map").css("grid-row", "1");
+		
+		$("#map_items").css("grid-column", "1");
+		$("#map_items").css("grid-row", "2");
+		$("#map_items").height($(".map_items_content").height()/1.75)
+		
+		$("#map").width($(window).width());
+		$("#map").height($(window).width()/1.2);
+		
+		
+		
+		
+	} else {
+		$(".map_container").css("width","100%");
+		$(".map_container").css("display","grid");
+		$(".map_container").css("grid-template-columns", "70% 30%");
+		$(".map_container").css("grid-template-rows", "1fr");
+		
+		$("#map").css("grid-column", "1");
+		$("#map").css("grid-row", "1");
+		
+		$("#map_items").css("grid-column", "2");
+		$("#map_items").css("grid-row", "1");
+		
+		$(".map_container").height($("#map").width()/2);
+	
+		$("#map_items").height($("#map").height());
+	
+	}
+
 
 	$.ajax({
         type: "GET",
@@ -315,11 +355,23 @@
 		
 		
 		for(var i=0; i<list_object.length; i++){
-			var popup_clic_content = "<div>" +
-			"<h5>" + list_object[i].name + "</h5>" +
-			"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
-			"<p class='popuptext' style='text-align:center'><a class='popuptext' target='_blank' href='" + list_object[i].lien + "'>lien</a></p>" +
-			"</div>";
+			
+			var popup_clic_content;
+
+			if(list_object[i].lien.length > 0){
+			
+				popup_clic_content= "<div>" +
+				"<h5>" + list_object[i].name + "</h5>" +
+				"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
+				"<p class='popuptext' style='text-align:center'><a class='popuptext' target='_blank' href='" + list_object[i].lien + "'>lien</a></p>" +
+				"</div>";
+			
+			} else {
+				popup_clic_content= "<div>" +
+				"<h5>" + list_object[i].name + "</h5>" +
+				"<p class='popuptext' style='text-align:center'>" + list_object[i].description + "</p>" +
+				"</div>";
+			}
 
 			if(list_object[i].type == 'Ville'){
 				var myicon;
@@ -411,7 +463,8 @@
 			
 		
 			
-		}	
+		}
+
 		
 		cities1.addTo(map);
 		cities2.addTo(map);
@@ -420,9 +473,7 @@
 		topic12.addTo(map);
 		cities12.addTo(map);
 		
-		map.addLayer(cities1); 
 			map.removeLayer(cities2); 
-			 map.addLayer(topic1);
 			 map.removeLayer(topic2);
 		
 		map.on('zoomend', function() {
@@ -489,5 +540,11 @@
 		
     
         map.addLayer(osmLayer);
+		
+		if($(window).height()> $(window).width()){
+			$("#map_items").height($(".map_items_content").height()*2.2)
+			$("#map_items").height($(".map_items_content").height()/1.75)
+			}	
+		
     }
 </script>

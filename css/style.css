@@ -445,7 +445,8 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .fh5co-section p {
-  color: rgba(255, 255, 255, 0.3);
+  /*color: rgba(255, 255, 255, 0.3);*/
+  color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
   line-height: 1.5;
 }
@@ -1880,22 +1881,22 @@ textarea {
 }
 
 .map_container{
-	display: grid;
+	/*display: grid;
 	  grid-template-columns: 70% 30%;
-	  grid-template-rows: 1fr;
+	  grid-template-rows: 1fr;*/
 	  padding-left:10px !important;
 	  padding-right:10px !important;
 }
 
 #map {
-  grid-column: 1;
-  grid-row: 1;
-  min-height:700px;
+  /*grid-column: 1;
+  grid-row: 1;*/
+  min-height:100px;
 }
 
 #map_items {
-  grid-column: 2;
-  grid-row: 1;
+  /*grid-column: 2;
+  grid-row: 1;*/
   padding:20px;
 }
 
@@ -2061,4 +2062,12 @@ textarea {
 		
 		.timeline-custom-badge{
 			top:-7px !important;
+		}
+		
+		.conseil_column {
+			width: 83.2% !important;
+		}
+		
+		.conseil_div {
+			padding-top: 1em !important;
 		}
