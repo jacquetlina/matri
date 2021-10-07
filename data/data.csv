@@ -59,3 +59,5 @@ id;name;latlg;type;excursion_journee;description;lien;scale
 58;Parc archéologique San Augustin;1.880760 -76.270309;Culturel;true;;https://fr.wikipedia.org/wiki/Parc_arch%C3%A9ologique_de_San_Agust%C3%ADn;12
 59;San Andres;12.581815 -81.691715;Paysage;true;;https://fr.wikipedia.org/wiki/San_Andr%C3%A9s_(%C3%AEle);12
 60;La Guajira;12.422034 -71.613417;Paysage;true;;https://fr.wikipedia.org/wiki/D%C3%A9sert_de_La_Guajira;12
+61;Cerro de Monserrate;4.605523 -74.055783;Culturel;true;;https://fr.wikipedia.org/wiki/Cerro_de_Monserrate;2
+62;Sierra Nevada del Cocuy;6.459550 -72.296607;Paysage;true;;https://fr.wikipedia.org/wiki/Parc_national_de_la_Sierra_Nevada_del_Cocuy;12
