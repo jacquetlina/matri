@@ -1843,6 +1843,7 @@ textarea {
 	height:36px;
 	margin: auto;
 	display:block;
+	cursor: pointer;
 }
 
 .label_legend{
