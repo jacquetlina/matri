@@ -86,13 +86,13 @@
 		<!-- </div> -->
 	</nav>
 	
-	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(images/pandas_3.jpg);" data-stellar-background-ratio="0.5">
+	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(images/hojas1.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Où aller</h2>
-					<p>Cette carte présente l'emplacement des éléments présentés dans les différentes sections. Vous pouvez retrouver ces éléments plus facilement depuis la liste sur le côté de la carte. Cliquez sur les éléments de la carte pour plus d'informations.</p><p>Cette liste n'est pas exhaustive. Des éléments pourront être rajoutés au cours de l'année.</p>
+					<p>Cette carte présente l'emplacement des éléments présentés dans les différentes sections. Vous pouvez retrouver ces éléments plus facilement depuis la liste sur la gauche de la carte. Cliquez sur les éléments de la carte pour plus d'informations. Cette liste n'est pas exhaustive, et de nouveaux éléments pourront être ajoutés plus tard.</p>
 					<p>Privilégiez Firefox ou Chrome comme navigateurs, et de préférence un écran d'ordinateur, pour visualiser la carte.</p>
 				</div>
 			</div>
@@ -149,7 +149,6 @@
 			<div class="row row-pb-md">
 				<div class="col-md-4 fh5co-widget">
 					<h4>Nous espérons vous voir nombreux en Colombie pour fêter avec nous.</h4>
-					<p>D'autres infos arriveront par la suite et seront regroupées sur ce site. Nous vous tiendrons au courant par mail des futures mises à jour.</p>
 					<p>Le mariage arrive bientôt. N'oubliez pas de nous prévenir de votre venue!</p>
 				</div>
 				<div class="col-md-2 col-md-push-1 fh5co-widget">
@@ -224,7 +223,6 @@
 		
 		$("#map").width($(window).width());
 		$("#map").height($(window).width()/1.2);
-		
 		
 		
 		
@@ -317,7 +315,63 @@
         }
     });
 
+	/*
+	var list_cities = [
+		{
+			'name': 'Medellin',
+			'latlg': [6.247006, -75.578236],
+			'type': 'ville',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		},
+		{
+			'name': 'Bogota',
+			'latlg': [4.701860, -74.069085],
+			'type': 'ville',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		},
+		{
+			'name': 'Cartagena',
+			'latlg': [10.423782, -75.548400],
+			'type': 'ville',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		}
+		
+	];
 	
+	var list_topic = [
+		{
+			'name': 'Jardin Botanique de Medellin',
+			'latlg': [6.269469, -75.564470],
+			'type': 'Parc',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		},
+		{
+			'name': 'Cierro Nutibara',
+			'latlg': [6.236138, -75.579852],
+			'type': 'Parc',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		},
+		{
+			'name': "MusÃ©e d'Antioquia",
+			'latlg': [6.252218, -75.569329],
+			'type': 'MusÃ©e',
+			'excursion_journee': true,
+			'description':'blablabla',
+			'lien':'www.wikipedia.org'
+		},
+	];
+	*/
+
     function initialize(list_object) {
         map = L.map('map').setView([5.859723, -74.924304], 6); // LIGNE 18
 		
@@ -697,4 +751,5 @@
 	
 	
 	
+
 </script>
