@@ -664,9 +664,9 @@
 			$("#map_items_item_" + list_map_object[i].id).on( "click", function() {
 			  var scale = $( this ).attr("scale");
 			  var lglat_i = $( this ).attr("lglat");
-			  for(var j=0; j<marker_list.length; j++){
-					if(marker_list[j].options.id == $( this ).attr('id').split('_')[3]){
-						marker_list[j].openPopup();
+			  for(var j=0; j<list_map_object.length; j++){
+					if(list_map_object[j].options.id == $( this ).attr('id').split('_')[3]){
+						list_map_object[j].openPopup();
 					}
 				}
 			  if(scale == 1){
