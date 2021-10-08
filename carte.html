@@ -544,6 +544,9 @@
 			 
 		//map.removeLayer(topic2);
 		
+		
+		console.log(culturel2)
+		
 		map.on('zoomend', function() {
 			var currentZoom = map.getZoom();
 			if(currentZoom >= 12) {
@@ -564,6 +567,7 @@
 				} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
 					map.addLayer(paysage2); 
 				} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				console.log("cult")
 					map.addLayer(culturel2);
 				} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
 					map.addLayer(mariage2); 
@@ -690,10 +694,41 @@
 			
 			create_map_list(data_object_list);
 		}
-		map.removeLayer(cities2); 
-		map.removeLayer(paysage2); 
-		map.removeLayer(culturel2); 
-		map.removeLayer(mariage2); 
+		
+		var currentZoom = map.getZoom();
+		if(currentZoom >= 12) {
+		    map.removeLayer(cities1); 
+			map.removeLayer(paysage1); 
+			map.removeLayer(culturel1); 
+			map.removeLayer(mariage1); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities2); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage2); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel2);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage2); 
+			}
+		} 
+		else {
+			map.removeLayer(cities2); 			 
+			map.removeLayer(paysage2); 
+			map.removeLayer(culturel2); 
+			map.removeLayer(mariage2); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities1); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage1); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel1);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage1); 
+			}
+		}
+		
 	});
 	
 	$('#panda_img_legend_paysage').click(function(){
@@ -717,10 +752,41 @@
 			
 			create_map_list(data_object_list);
 		}
-		map.removeLayer(cities2); 
-		map.removeLayer(paysage2); 
-		map.removeLayer(culturel2); 
-		map.removeLayer(mariage2); 
+		
+		var currentZoom = map.getZoom();
+		if(currentZoom >= 12) {
+		    map.removeLayer(cities1); 
+			map.removeLayer(paysage1); 
+			map.removeLayer(culturel1); 
+			map.removeLayer(mariage1); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities2); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage2); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel2);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage2); 
+			}
+		} 
+		else {
+			map.removeLayer(cities2); 			 
+			map.removeLayer(paysage2); 
+			map.removeLayer(culturel2); 
+			map.removeLayer(mariage2); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities1); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage1); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel1);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage1); 
+			}
+		}
+		
 	});
 	
 	$('#panda_img_legend_culturel').click(function(){
@@ -744,10 +810,41 @@
 			
 			create_map_list(data_object_list);
 		}
-		map.removeLayer(cities2); 
-		map.removeLayer(paysage2); 
-		map.removeLayer(culturel2); 
-		map.removeLayer(mariage2); 
+		
+		var currentZoom = map.getZoom();
+		if(currentZoom >= 12) {
+		    map.removeLayer(cities1); 
+			map.removeLayer(paysage1); 
+			map.removeLayer(culturel1); 
+			map.removeLayer(mariage1); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities2); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage2); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel2);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage2); 
+			}
+		} 
+		else {
+			map.removeLayer(cities2); 			 
+			map.removeLayer(paysage2); 
+			map.removeLayer(culturel2); 
+			map.removeLayer(mariage2); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities1); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage1); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel1);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage1); 
+			}
+		}
+		
 	});
 	
 	$('#panda_img_legend_mariage').click(function(){
@@ -771,10 +868,41 @@
 			
 			create_map_list(data_object_list);
 		}
-		map.removeLayer(cities2); 
-		map.removeLayer(paysage2); 
-		map.removeLayer(culturel2); 
-		map.removeLayer(mariage2); 
+		
+		var currentZoom = map.getZoom();
+		if(currentZoom >= 12) {
+		    map.removeLayer(cities1); 
+			map.removeLayer(paysage1); 
+			map.removeLayer(culturel1); 
+			map.removeLayer(mariage1); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities2); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage2); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel2);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage2); 
+			}
+		} 
+		else {
+			map.removeLayer(cities2); 			 
+			map.removeLayer(paysage2); 
+			map.removeLayer(culturel2); 
+			map.removeLayer(mariage2); 
+			
+			if($('#panda_img_legend_ville').hasClass('panda_active')){
+				map.addLayer(cities1); 					
+			} else if($('#panda_img_legend_paysage').hasClass('panda_active')){
+				map.addLayer(paysage1); 
+			} else if($('#panda_img_legend_culturel').hasClass('panda_active')){
+				map.addLayer(culturel1);
+			} else if($('#panda_img_legend_mariage').hasClass('panda_active')){
+				map.addLayer(mariage1); 
+			}
+		}
+		
 	});
 	
 	
