@@ -548,36 +548,48 @@
 			var currentZoom = map.getZoom();
 			if(currentZoom >= 12) {
 			    map.removeLayer(cities1); 
-				map.addLayer(cities2); 
 				
 				map.removeLayer(paysage1); 
-				map.addLayer(paysage2); 
 				
 				map.removeLayer(culturel1); 
-				map.addLayer(culturel2); 
 				
 				map.removeLayer(mariage1); 
-				map.addLayer(mariage2); 
 				
 				
 				//map.removeLayer(topic1);
 				//map.addLayer(topic2);
+				
+				if($('#panda_img_legend_ville').addClass('panda_active')){
+					map.addLayer(cities2); 					
+				} else if($('#panda_img_legend_paysage').addClass('panda_active')){
+					map.addLayer(paysage2); 
+				} else if($('#panda_img_legend_culturel').addClass('panda_active')){
+					map.addLayer(culturel2);
+				} else if($('#panda_img_legend_mariage').addClass('panda_active')){
+					map.addLayer(mariage2); 
+				}
 			} 
 			else {
-			 map.addLayer(cities1); 
 			map.removeLayer(cities2); 
 			 
 			 //map.addLayer(topic1);
 			 //map.removeLayer(topic2);
 			 
-			 map.addLayer(paysage1); 
 				map.removeLayer(paysage2); 
 				
-				map.addLayer(culturel1); 
 				map.removeLayer(culturel2); 
 				
-				map.addLayer(mariage1); 
 				map.removeLayer(mariage2); 
+				
+				if($('#panda_img_legend_ville').addClass('panda_active')){
+					map.addLayer(cities1); 					
+				} else if($('#panda_img_legend_paysage').addClass('panda_active')){
+					map.addLayer(paysage1); 
+				} else if($('#panda_img_legend_culturel').addClass('panda_active')){
+					map.addLayer(culturel1);
+				} else if($('#panda_img_legend_mariage').addClass('panda_active')){
+					map.addLayer(mariage1); 
+				}
 			}
 		});
 		
@@ -678,6 +690,10 @@
 			
 			create_map_list(data_object_list);
 		}
+		map.removeLayer(cities2); 
+		map.removeLayer(paysage2); 
+		map.removeLayer(culturel2); 
+		map.removeLayer(mariage2); 
 	});
 	
 	$('#panda_img_legend_paysage').click(function(){
@@ -701,6 +717,10 @@
 			
 			create_map_list(data_object_list);
 		}
+		map.removeLayer(cities2); 
+		map.removeLayer(paysage2); 
+		map.removeLayer(culturel2); 
+		map.removeLayer(mariage2); 
 	});
 	
 	$('#panda_img_legend_culturel').click(function(){
@@ -724,6 +744,10 @@
 			
 			create_map_list(data_object_list);
 		}
+		map.removeLayer(cities2); 
+		map.removeLayer(paysage2); 
+		map.removeLayer(culturel2); 
+		map.removeLayer(mariage2); 
 	});
 	
 	$('#panda_img_legend_mariage').click(function(){
@@ -747,6 +771,10 @@
 			
 			create_map_list(data_object_list);
 		}
+		map.removeLayer(cities2); 
+		map.removeLayer(paysage2); 
+		map.removeLayer(culturel2); 
+		map.removeLayer(mariage2); 
 	});
 	
 	
