@@ -264,6 +264,7 @@
 	
 	
 	var data_object_list = [];
+	var marker_list;
 	var map;
 	
 	var cities1;
@@ -402,7 +403,7 @@
 		mariage2 = L.layerGroup();
 		mariage12 = L.layerGroup();
 		
-		var marker_list = [];
+		marker_list = [];
 		
 		
 		for(var i=0; i<list_object.length; i++){
@@ -664,9 +665,9 @@
 			$("#map_items_item_" + list_map_object[i].id).on( "click", function() {
 			  var scale = $( this ).attr("scale");
 			  var lglat_i = $( this ).attr("lglat");
-			  for(var j=0; j<list_map_object.length; j++){
-					if(list_map_object[j].options.id == $( this ).attr('id').split('_')[3]){
-						list_map_object[j].openPopup();
+			  for(var j=0; j<marker_list.length; j++){
+					if(marker_list[j].options.id == $( this ).attr('id').split('_')[3]){
+						marker_list[j].openPopup();
 					}
 				}
 			  if(scale == 1){
