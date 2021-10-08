@@ -111,19 +111,19 @@
 								<div class="row">
 									<div id="map_legend">
 										<div id="map_legend_item1">
-											<img class='panda_img_legend' src='images/pandaredicon.png'/>
+											<img id="panda_img_legend_ville" class='panda_img_legend panda_active' src='images/pandaredicon.png'/>
 											<span class='label_legend'>Villes et villages à visiter</span>
 										</div>
 										<div id="map_legend_item2">
-											<img class='panda_img_legend' src='images/pandadarkgreenicon.png'/>
+											<img id="panda_img_legend_paysage" class='panda_img_legend panda_active' src='images/pandadarkgreenicon.png'/>
 											<span class='label_legend'>Parcs, paysages typiques</span>
 										</div>
 										<div id="map_legend_item3">
-											<img class='panda_img_legend' src='images/pandabrownicon.png'/>
+											<img id="panda_img_legend_culturel" class='panda_img_legend panda_active' src='images/pandabrownicon.png'/>
 											<span class='label_legend'>Monuments, quartiers typiques</span>
 										</div>
 										<div id="map_legend_item4">
-											<img class='panda_img_legend' src='images/pandaorangeicon.png'/>
+											<img id="panda_img_legend_mariage" class='panda_img_legend panda_active' src='images/pandaorangeicon.png'/>
 											<span class='label_legend'>Liés au mariage</span>
 										</div>
 									</div>
@@ -247,6 +247,42 @@
 	
 	}
 
+	if($('#panda_img_legend_ville').hasClass('panda_active')){
+		$('#panda_img_legend_ville').addClass('panda_active');
+	}
+	
+	if($('#panda_img_legend_paysage').hasClass('panda_active')){
+		$('#panda_img_legend_paysage').addClass('panda_active');
+	}
+	
+	if($('#panda_img_legend_culturel').hasClass('panda_active')){
+		$('#panda_img_legend_culturel').addClass('panda_active');
+	}
+	
+	if($('#panda_img_legend_mariage').hasClass('panda_active')){
+		$('#panda_img_legend_mariage').addClass('panda_active');
+	}
+	
+	
+	
+	var data_object_list = [];
+	var map;
+	
+	var cities1;
+	var cities2;
+	var cities12;
+	
+	var paysage1;
+	var paysage2;
+	var paysage12;
+	
+	var culturel1;
+	var culturel2;
+	var culturel12;
+	
+	var mariage1;
+	var mariage2;
+	var mariage12;
 	
 	
 	
@@ -256,7 +292,7 @@
         dataType: "text",
         success: function(data) {
 			var data_list = data.split('\n');
-			var data_object_list = [];
+			data_object_list = [];
 			for(var i =1; i<data_list.length; i++){
 				var data_list_line = data_list[i].split(';');
 				data_object_list.push(
@@ -283,7 +319,7 @@
 
 	
     function initialize(list_object) {
-        var map = L.map('map').setView([5.859723, -74.924304], 6); // LIGNE 18
+        map = L.map('map').setView([5.859723, -74.924304], 6); // LIGNE 18
 		
 		
         var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { // LIGNE 20
@@ -292,12 +328,25 @@
         });
 		
 		
-		var cities1 = L.layerGroup();
-		var cities2 = L.layerGroup();
-		var topic1 = L.layerGroup();
-		var topic2 = L.layerGroup();
-		var cities12 = L.layerGroup();
-		var topic12 = L.layerGroup();
+		cities1 = L.layerGroup();
+		cities2 = L.layerGroup();
+		cities12 = L.layerGroup();
+		
+		//var topic1 = L.layerGroup();
+		//var topic2 = L.layerGroup();
+		//var topic12 = L.layerGroup();
+		
+		paysage1 = L.layerGroup();
+		paysage2 = L.layerGroup();
+		paysage12 = L.layerGroup();
+		
+		culturel1 = L.layerGroup();
+		culturel2 = L.layerGroup();
+		culturel12 = L.layerGroup();
+		
+		mariage1 = L.layerGroup();
+		mariage2 = L.layerGroup();
+		mariage12 = L.layerGroup();
 		
 		var marker_list = [];
 		
@@ -357,11 +406,11 @@
 				marker_list.push(marker);
 				
 				if(list_object[i].scale == '1'){
-					marker.addTo(topic1);
+					marker.addTo(paysage1);
 				} else if(list_object[i].scale == '2'){
-					marker.addTo(topic2);
+					marker.addTo(paysage2);
 				} else if(list_object[i].scale == '12'){
-					marker.addTo(topic12);
+					marker.addTo(paysage12);
 				}
 						
 			} else if(list_object[i].type == 'Culturel'){
@@ -378,11 +427,11 @@
 				marker_list.push(marker);
 				
 				if(list_object[i].scale == '1'){
-					marker.addTo(topic1);
+					marker.addTo(culturel1);
 				} else if(list_object[i].scale == '2'){
-					marker.addTo(topic2);
+					marker.addTo(culturel2);
 				} else if(list_object[i].scale == '12'){
-					marker.addTo(topic12);
+					marker.addTo(culturel12);
 				}
 						
 			}  else if(list_object[i].type == 'mariage'){
@@ -399,11 +448,11 @@
 				marker_list.push(marker);
 				
 				if(list_object[i].scale == '1'){
-					marker.addTo(topic1);
+					marker.addTo(mariage1);
 				} else if(list_object[i].scale == '2'){
-					marker.addTo(topic2);
+					marker.addTo(mariage2);
 				} else if(list_object[i].scale == '12'){
-					marker.addTo(topic12);
+					marker.addTo(mariage12);
 				}
 			
 			} 
@@ -416,27 +465,65 @@
 		
 		cities1.addTo(map);
 		cities2.addTo(map);
-		topic1.addTo(map);
-		topic2.addTo(map);
-		topic12.addTo(map);
 		cities12.addTo(map);
 		
-			map.removeLayer(cities2); 
-			 map.removeLayer(topic2);
+		paysage1.addTo(map);
+		paysage2.addTo(map);
+		paysage12.addTo(map);
+		
+		culturel1.addTo(map);
+		culturel2.addTo(map);
+		culturel12.addTo(map);
+		
+		mariage1.addTo(map);
+		mariage2.addTo(map);
+		mariage12.addTo(map);
+		
+		//topic1.addTo(map);
+		//topic2.addTo(map);
+		//topic12.addTo(map);
+		
+		map.removeLayer(cities2); 
+		map.removeLayer(paysage2); 
+		map.removeLayer(culturel2); 
+		map.removeLayer(mariage2); 
+			 
+		//map.removeLayer(topic2);
 		
 		map.on('zoomend', function() {
 			var currentZoom = map.getZoom();
 			if(currentZoom >= 12) {
-			   map.removeLayer(cities1); 
-			map.addLayer(cities2); 
-			 map.removeLayer(topic1);
-			 map.addLayer(topic2);
+			    map.removeLayer(cities1); 
+				map.addLayer(cities2); 
+				
+				map.removeLayer(paysage1); 
+				map.addLayer(paysage2); 
+				
+				map.removeLayer(culturel1); 
+				map.addLayer(culturel2); 
+				
+				map.removeLayer(mariage1); 
+				map.addLayer(mariage2); 
+				
+				
+				//map.removeLayer(topic1);
+				//map.addLayer(topic2);
 			} 
 			else {
 			 map.addLayer(cities1); 
 			map.removeLayer(cities2); 
-			 map.addLayer(topic1);
-			 map.removeLayer(topic2);
+			 
+			 //map.addLayer(topic1);
+			 //map.removeLayer(topic2);
+			 
+			 map.addLayer(paysage1); 
+				map.removeLayer(paysage2); 
+				
+				map.addLayer(culturel1); 
+				map.removeLayer(culturel2); 
+				
+				map.addLayer(mariage1); 
+				map.removeLayer(mariage2); 
 			}
 		});
 		
@@ -444,30 +531,59 @@
 		$("#map_items").height(map_height);
 		$("#map_items_list").height(map_height/1.4);
 		
+		create_map_list(list_object);
 		
 		
-		for(var i = 0; i<list_object.length; i++){
+		
+		
+    
+        map.addLayer(osmLayer);
+		
+		if($(window).height()> $(window).width()){
+			$("#map_items").height($(".map_items_content").height())
+			} else {
+			$(".map_items_content").height($("#map").height()-20);
+			$("#map_items_list").height($("#map").height()*0.6)
+		}			
+		
+    }
+	
+	function create_map_list(list_map_object){
+		$("#map_items_list").html('')
+		for(var i = 0; i<list_map_object.length; i++){
 		
 			var img_html='';
 			
-			if(list_object[i].type=='Ville'){
+			if(list_map_object[i].type=='Ville'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandaredicon.png" + "'/>";
-			} else if(list_object[i].type=='Paysage'){
+				if($('#panda_img_legend_ville').hasClass('panda_active') == false){
+					continue;
+				}
+			} else if(list_map_object[i].type=='Paysage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandadarkgreenicon.png" + "'/>";
-			} else if(list_object[i].type=='Culturel'){
+				if($('#panda_img_legend_paysage').hasClass('panda_active') == false){
+					continue;
+				}
+			} else if(list_map_object[i].type=='Culturel'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandabrownicon.png" + "'/>";
-			} else if(list_object[i].type=='mariage'){
+				if($('#panda_img_legend_culturel').hasClass('panda_active') == false){
+					continue;
+				}
+			} else if(list_map_object[i].type=='mariage'){
 				img_html = "<img class='my-div-image-mini' src='" + "images/pandaorangeicon.png" + "'/>";
+				if($('#panda_img_legend_mariage').hasClass('panda_active') == false){
+					continue;
+				}
 			} 
 						
 			
 		
-			var html_item = "<div id='map_items_item_" + list_object[i].id + "' class='map_items_item' lglat="+ list_object[i].latlg + " scale="+ list_object[i].scale + ">" +
+			var html_item = "<div id='map_items_item_" + list_map_object[i].id + "' class='map_items_item' lglat="+ list_map_object[i].latlg + " scale="+ list_map_object[i].scale + ">" +
 				img_html +
-				list_object[i].name +
+				list_map_object[i].name +
 			"</div>"
 			$("#map_items_list").append(html_item);
-			$("#map_items_item_" + list_object[i].id).on( "click", function() {
+			$("#map_items_item_" + list_map_object[i].id).on( "click", function() {
 			  var scale = $( this ).attr("scale");
 			  var lglat_i = $( this ).attr("lglat");
 			  for(var j=0; j<marker_list.length; j++){
@@ -484,17 +600,101 @@
 			  }
 			});
 		}
-		
-		
-    
-        map.addLayer(osmLayer);
-		
-		if($(window).height()> $(window).width()){
-			$("#map_items").height($(".map_items_content").height())
-			} else {
-			$(".map_items_content").height($("#map").height()-20);
-			$("#map_items_list").height($("#map").height()*0.6)
-		}			
-		
-    }
+	
+	}
+	
+	$('#panda_img_legend_ville').click(function(){
+		if($('#panda_img_legend_ville').hasClass('panda_active')){
+			$('#panda_img_legend_ville').removeClass('panda_active');
+			$('#panda_img_legend_ville').attr('src','images/pandaredicon_2.png');
+			
+			map.removeLayer(cities1); 
+			map.removeLayer(cities2); 
+			map.removeLayer(cities12); 
+			
+			create_map_list(data_object_list);
+			
+		} else {
+			$('#panda_img_legend_ville').addClass('panda_active');
+			$('#panda_img_legend_ville').attr('src','images/pandaredicon.png');
+			
+			map.addLayer(cities1); 
+			map.addLayer(cities2); 
+			map.addLayer(cities12); 
+			
+			create_map_list(data_object_list);
+		}
+	});
+	
+	$('#panda_img_legend_paysage').click(function(){
+		if($('#panda_img_legend_paysage').hasClass('panda_active')){
+			$('#panda_img_legend_paysage').removeClass('panda_active');
+			$('#panda_img_legend_paysage').attr('src','images/pandadarkgreenicon_2.png');
+			
+			map.removeLayer(paysage1); 
+			map.removeLayer(paysage2); 
+			map.removeLayer(paysage12); 
+			
+			create_map_list(data_object_list);
+			
+		} else {
+			$('#panda_img_legend_paysage').addClass('panda_active');
+			$('#panda_img_legend_paysage').attr('src','images/pandadarkgreenicon.png');
+			
+			map.addLayer(paysage1); 
+			map.addLayer(paysage2); 
+			map.addLayer(paysage12); 
+			
+			create_map_list(data_object_list);
+		}
+	});
+	
+	$('#panda_img_legend_culturel').click(function(){
+		if($('#panda_img_legend_culturel').hasClass('panda_active')){
+			$('#panda_img_legend_culturel').removeClass('panda_active');
+			$('#panda_img_legend_culturel').attr('src','images/pandabrownicon_2.png');
+			
+			map.removeLayer(culturel1); 
+			map.removeLayer(culturel2); 
+			map.removeLayer(culturel12); 
+			
+			create_map_list(data_object_list);
+			
+		} else {
+			$('#panda_img_legend_culturel').addClass('panda_active');
+			$('#panda_img_legend_culturel').attr('src','images/pandabrownicon.png');
+			
+			map.addLayer(culturel1); 
+			map.addLayer(culturel2); 
+			map.addLayer(culturel12); 
+			
+			create_map_list(data_object_list);
+		}
+	});
+	
+	$('#panda_img_legend_mariage').click(function(){
+		if($('#panda_img_legend_mariage').hasClass('panda_active')){
+			$('#panda_img_legend_mariage').removeClass('panda_active');
+			$('#panda_img_legend_mariage').attr('src','images/pandaorangeicon_2.png');
+			
+			map.removeLayer(mariage1); 
+			map.removeLayer(mariage2); 
+			map.removeLayer(mariage12); 
+			
+			create_map_list(data_object_list);
+			
+		} else {
+			$('#panda_img_legend_mariage').addClass('panda_active');
+			$('#panda_img_legend_mariage').attr('src','images/pandaorangeicon.png');
+			
+			map.addLayer(mariage1); 
+			map.addLayer(mariage2); 
+			map.addLayer(mariage12); 
+			
+			create_map_list(data_object_list);
+		}
+	});
+	
+	
+	
 </script>
