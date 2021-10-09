@@ -2089,3 +2089,7 @@ textarea {
 		.list_items_timeline{
 			color: rgba(255, 255, 255, 0.7) !important;
 		}
+		
+		.dropdown{
+			color: rgba(255, 255, 255, 0.7) !important;
+		}
