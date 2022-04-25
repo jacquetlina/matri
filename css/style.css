@@ -2093,3 +2093,20 @@ textarea {
 		.dropdown{
 			color: rgba(255, 255, 255, 0.7) !important;
 		}
+		
+		
+		.flag_link{
+			margin:10px;
+		}
+		
+		.flag_image{
+			width:40px;
+			height:40px;
+		}
+		
+		#flag_div{
+			z-index: 3000;
+			position:fixed;
+			top: 40px;
+			right: 40px
+		}
